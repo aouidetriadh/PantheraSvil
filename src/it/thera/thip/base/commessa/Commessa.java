@@ -76,7 +76,7 @@ import it.thera.thip.vendite.ordineVE.*;
  * 35221   09/02/2022    YBA             Modifica il metodo checkIdEsternoConfig
  * 33950   10/09/2021    RA				 Aggiunto metodo hasCompenenteATempo
  * 34585   26/11/2021    RA				 Aggiunto metodo getUltimoBudgetCommessaDefinitivo()
- * 35382   12/03/2022    RA				 Aggiunto metodi di servizi per commessa
+ * 35382   12/03/2022    RA				 Aggiunto metodi di servizi per commessa Prova GIT
  */
 
 // 4882 DM inizio
