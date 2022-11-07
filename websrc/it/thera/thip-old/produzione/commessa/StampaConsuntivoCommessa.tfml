@@ -1,0 +1,53 @@
+<tfml>
+  <generator type="batchForm"></generator>
+	<form classHdr="StampaConsuntivoCommessa"
+				name="StampaConsuntivoCommessa"
+				errorList="yes"
+				menubar="yes"
+				toolbar="yes"
+				submitReset="none"
+				header="it.thera.thip.cs.Header.jsp"
+				footer="it.thera.thip.cs.Footer.jsp"
+				webFormModifierClass="it.thera.thip.produzione.commessa.web.StampaConsuntivoCommessaWebFormModifier"
+				onLoadPresent="yes"
+				jsLibraryName="it/thera/thip/produzione/commessa/StampaConsuntivoCommessa.js">
+
+		<menubar name="myMenuBar" width="60" color="#000000" background="#A5B6CE">
+			<import file="com/thera/thermfw/batch/PrintRunnableMenu.tfml"/>
+		</menubar>
+
+		<toolbar name="myToolBar" width="24" height="24" imgwidth="16" imgheight="16" color="#f7fbfd" background="#C8D6E1">
+			<import file="com/thera/thermfw/batch/PrintRunnableMenu.tfml"/>
+		</toolbar>		
+
+		<textinput name="thReportId" classAD="ReportId"/>
+		<textinput name="IdAzienda" classAD="IdAzienda"/>
+		
+		<tabbed name="mytabbed" height="100%" width="100%">
+			<tab name="GeneraleTab" resourceFile="it.thera.thip.produzione.commessa.resources.StampaConsuntivoCommessa" resourceID="GeneraleTab">
+				<combobox classAD="StatoCommessa" name="StatoCommessa"/>
+				<combobox name="TipoStampa" classAD="TipoStampa" onChange="onTipoStampaModifAction()"/>
+				<combobox name="TipoDettaglio" classAD="TipoDettaglio"/>
+				<checkbox classAD="ExecutePrint" name="ExecutePrint"/>
+				<!-- 36252 inizio -->
+				<checkbox classAD="UsaConsuntiviStoricizzati" name="UsaConsuntiviStoricizzati" onClick="onUsaConsuntiviAction()"/>
+				<textinput name="DataRiferimento" classAD="DataRiferimento" showCalendarBtn="yes"/>
+				<multisearchform classRD="Commessa" name="Commessa" fixedRestrictConditions="IdCommessaAppartenenza,NULL_VALUE"/>
+				<multisearchform classRD="ConsuntivoCommessa" additionalfields="1" name="ConsuntivoCommessa" 
+			   	 additionalRestrictConditions="IdCommessa, IdCommessa"/>	
+			    <!-- 36252 fine -->
+			</tab>
+			<tab name="FiltroTab" resourceFile="it.thera.thip.produzione.commessa.resources.StampaConsuntivoCommessa" resourceID="FiltroTab">
+				<combobox classAD="ArticoliRisorse" name="ArticoliRisorse" onChange="onArticoliRisorseModifAction()"/>
+				<combobox classAD="TipoRiga" name="TipoRiga"/>
+				<textinput name="DataSaldoIniziale" classAD="DataSaldoIniziale" showCalendarBtn="yes"/>
+				<textinput name="DataSaldoFinale" classAD="DataSaldoFinale" showCalendarBtn="yes"/>
+				<combobox classAD="TipoRisorsa" name="TipoRisorsa"/>
+				<combobox classAD="LivelloRisorsa" name="LivelloRisorsa"/>				
+				<subform name="CondizioniFiltri" classCD="CondizioniFiltri"/>
+			</tab>
+		</tabbed>
+
+	</form>
+
+</tfml>

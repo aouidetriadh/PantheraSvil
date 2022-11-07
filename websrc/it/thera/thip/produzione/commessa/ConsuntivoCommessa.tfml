@@ -1,0 +1,63 @@
+<tfml>
+<form classHdr="ConsuntivoCommessa" name="form" 
+			errorList="yes"
+			menubar="no"
+			submitReset="none"
+			toolbar="yes"
+			servlet="it.thera.thip.produzione.commessa.web.ConsuntivoCommessaFormActionAdapter"
+		  	header="it.thera.thip.cs.Header.jsp" 
+		  	footer="it.thera.thip.cs.Footer.jsp"
+			webFormModifierClass="it.thera.thip.produzione.commessa.web.ConsuntivoCommessaWebFormModifier"
+			jsLibraryName="it/thera/thip/produzione/commessa/ConsuntivoCommessa.js"
+		  	onLoadPresent="yes"
+			>
+			
+	<menubar name="myMenuBar" width="60" color="#000000" background="#A5B6CE">
+		<import file="it/thera/thip/cs/defObjMenu.tfml"/>
+    </menubar>
+    <toolbar name="myToolBar" width="24" height="24" imgwidth="16" imgheight="16" color="#f7fbfd" background="#C8D6E1">
+		<import file="it/thera/thip/cs/defObjMenu.tfml"/>
+    </toolbar>
+	
+	<tabbed name="mytabbed" height="100%" width="100%">
+		<tab name="tab1" resourceFile="it.thera.thip.produzione.commessa.resources.ConsuntivoCommessa" resourceID="Generale">
+			<textinput classAD="IdAzienda" name="IdAzienda"/>
+			<textinput classAD="IdConsuntivo" name="IdConsuntivo"/>
+			<multisearchform classRD="Commessa" name="Commessa" fixedRestrictConditions="IdCommessaAppartenenza,NULL_VALUE" onKeyChange="completaDatiConsuntivo()"/>
+			<combobox classAD="StatoAvanzamento" name="StatoAvanzamento"/>
+			<textinput classAD="DataRiferimento" name="DataRiferimento" showCalendarBtn="yes"/>
+			<checkbox classAD="UsaDataEstrazioneStorici" name="UsaDataEstrazioneStorici" onClick="gestioneUsaDataEstrazioneStorici()"/>
+			<textinput classAD="Descrizione" name="Descrizione"/>
+			<multisearchform classRD="ComponenteTotali" name="ComponenteTotali"/>
+			<subform name="DatiComuniEstesi" classCD="DatiComuniEstesi"/>
+			<label name="SorgentiLab" resourceFile="it.thera.thip.produzione.commessa.resources.ConsuntivoCommessa" resourceID="SorgentiLbl"/>
+			<checkbox classAD="Consolidato" name="Consolidato"/>
+			<checkbox classAD="EstrazioneOrdini" name="EstrazioneOrdini"/>
+			<checkbox classAD="EstrazioneRichieste" name="EstrazioneRichieste"/>
+			<label name="CostiLab" resourceFile="it.thera.thip.produzione.commessa.resources.ConsuntivoCommessa" resourceID="CostiLbl"/>
+			<textinput classAD="CostoRiferimento" name="CostoRiferimento"/>
+			<textinput classAD="CostoPrimo" name="CostoPrimo"/>
+			<textinput classAD="CostoIndustriale" name="CostoIndustriale"/>
+			<textinput classAD="CostoGenerale" name="CostoGenerale"/>
+			<checkbox classAD="DettagliCommessa" name="DettagliCommessa"/>
+			<checkbox classAD="DettagliSottoCommesse" name="DettagliSottoCommesse"/>
+			<checkbox classAD="Totali" name="Totali"/>
+			<checkbox classAD="ComponentiPropri" name="ComponentiPropri"/>
+			<checkbox classAD="TotaleGenerale" name="TotaleGenerale"/>
+			<checkbox classAD="SoloComponentiValorizzate" name="SoloComponentiValorizzate"/>
+			<button name="thAggiornaBUT" script="aggiornaConsuntivoView()" resourceFile ="it.thera.thip.produzione.commessa.resources.ConsuntivoCommessa" resourceTooltipID="Aggiorna" resourceID="AggiornaID"/>
+			<mdvbutton name="newMDV"/>
+		</tab>
+		<tab name="tab2" resourceFile="it.thera.thip.produzione.commessa.resources.ConsuntivoCommessa" resourceID="Riferimento">
+			<multisearchform classRD="CommessaAppart" name="CommessaAppart"/>
+			<multisearchform classRD="CommessaPrm" name="CommessaPrm"/>
+			<multisearchform classRD="Stabilimento" name="Stabilimento" idCols="5" descCols="35"/>
+			<multisearchform classRD="Articolo" name="Articolo"/>
+			<multisearchform classRD="Versione" name="Versione" idCols="10" descCols="35"/>
+			<multisearchform classRD="Configurazione" name="Configurazione" idCols="10" descCols="35"/>
+			<textinput classAD="QuantitaPrm" name="QuantitaPrm"/>
+			<textinput classAD="IdDescUMPrmMag" name="IdDescUMPrmMag"/>
+		</tab>
+	</tabbed>
+</form>
+</tfml>

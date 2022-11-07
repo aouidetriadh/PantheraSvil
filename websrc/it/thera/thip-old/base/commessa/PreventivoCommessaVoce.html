@@ -1,0 +1,449 @@
+<html>
+<head>
+</head>
+<body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0">
+	<form name="PreventivoCommessaVoceForm" action="submit">
+		<table cellspacing="1" cellpadding="1" height="100%" width="100%">
+			<!-- **************************************************************************************************** -->
+			<!-- Menubar -->
+			<tr>
+				<td style="height:0">
+					<span class="menubar" id="myMenuBar"/>
+				</td>
+			</tr>
+			<!-- **************************************************************************************************** -->
+			<!-- Toolbar -->
+			<tr>
+				<td style="height:0">
+					<span class="toolbar" id="myToolBar"/>
+				</td>
+			</tr>
+			<!-- **************************************************************************************************** -->
+			<!-- Campi nascosti -->
+			<tr>
+				<td style="height:0px">
+					<input type="hidden" id="IdAzienda" name="IdAzienda"/>
+					<input type="hidden" id="IdAnnoPrevc" name="IdAnnoPrevc"/>
+					<input type="hidden" id="IdNumeroPrevc" name="IdNumeroPrevc"/>
+					<input type="hidden" id="IdRigacPrv" name="IdRigacPrv"/>
+					<input type="hidden" id="IdSubRigacPrv" name="IdSubRigacPrv"/>
+					<input type="hidden" id="IdRigavPrv" name="IdRigavPrv"/>
+					<input type="hidden" id="IdSubRigavPrv" name="IdSubRigavPrv"/>
+					<input type="hidden" id="SplRiga" name="SplRiga"/>
+					<input type="hidden" id="GeneraRigaDettaglio" name="GeneraRigaDettaglio"/><!-- 29166 -->
+					<input type="hidden" id="DescrizioneArticoloField" name="DescrizioneArticoloField"/>
+					<input type="hidden" id="Valuta" name="Valuta"/>
+					<input type="hidden" id="ValutaAziendale" name="ValutaAziendale"/>
+					<input type="hidden" id="Cambio" name="Cambio"/>
+					<input type="hidden" id="ArticoloServizio" name="ArticoloServizio"/>
+				</td>
+			</tr>
+			<!-- **************************************************************************************************** -->
+			<!-- Pannello tabulare principale -->
+			<tr>
+				<td>
+					<span class="tabbed" id="MainTabbed">
+						<!-- **************************************************************************************** -->
+						<!-- Cartella Generale -->
+						<span class="tab" id="GeneraleTab">
+							<table>
+								<tr>
+									<td>
+										<table cellspacing="1" cellpadding="1">
+											<tr>
+												<td nowrap="true">
+													<label for="SequenzaRiga">
+														Sequenza riga
+													</label>
+												</td>
+												<td>
+													<input type="text" id="SequenzaRiga" name="SequenzaRiga" size="5"/>
+												</td>
+												<td>&nbsp;</td>
+												<td>&nbsp;</td>
+												<td>
+													<input type="checkbox" id="NoFatturare" name="NoFatturare"/>
+												</td>
+											</tr>
+											<tr>
+						                    	<td nowrap="true"><label for="TipoRigav"></label></td>
+						                        <td><select name="TipoRigav" id="TipoRigav"><option></option></select></td>
+						                        <td>&nbsp;</td>
+						                        <td>&nbsp;</td>
+						                        <td>&nbsp;</td>
+						                    </tr>
+						                    <tr>
+						                        <td colspan="5"> <span class="subform" name="descrizioneComponent" id="descrizioneComponent"></span></td>
+						                    </tr>
+						                    <tr id="trRisorsa">
+								                <td colspan="6">
+								                  <table width="97%" style="margin: -5 2 2 5;">
+								                    <tr>
+								                      <td>
+								                        <FIELDSET name="RisorsaFieldSet">
+								                          <LEGEND align="top">
+								                            <label id="RisorsaLabel" name="RisorsaLabel" />
+								                          </LEGEND>
+								                          <table border="0">
+								                            <tr>
+								                              <td width="105"><label for="TipoRisorsa"></label></td>
+								                              <td><select name="TipoRisorsa" id="TipoRisorsa"/></td>
+								                            </tr>
+								                            <tr>
+								                              <td><label for="LivelloRisorsa"></label></td>
+								                              <td><select name="LivelloRisorsa" id="LivelloRisorsa"/></td>
+								                            </tr>
+								                            <tr>
+								                              <td nowrap="nowrap"><label for="Risorsa"></label></td>
+								                              <td nowrap="nowrap"><span class="multisearchform" id="Risorsa"/></td>
+								                            </tr>
+								                          </table>
+								                        </FIELDSET>
+								                       </td>
+								                    </tr>
+								                  </table>
+								                  </td>						                    	
+						                    </tr>
+						                    <tr id="trArticolo">
+											<!-- Proxy Articolo -->
+												<td nowrap="true">
+													<label for="RArticolo">
+														Articolo
+													</label>
+												</td>
+												<td nowrap="true" colspan="3">
+													<span class="articolomultisearchform" id="RArticolo"></span>
+												</td>
+												<td>&nbsp;</td>
+											</tr>
+											<tr id="trArticoloVersione">
+												<td nowrap="true">
+													<label for="VersioneArticolo">
+														Versione Richiesta
+													</label>
+												</td>
+												<td nowrap="true" colspan="3">
+													<span class="multisearchform" id="VersioneArticolo"></span>
+												</td>
+												<td>&nbsp;</td>
+												<td>&nbsp;</td>
+											</tr>
+											<tr id="trArticoloConfig">
+												<td nowrap="true">
+													<label for="Configurazione">
+														Configurazione
+													</label>
+												</td>
+												<td nowrap="true" colspan="3">
+													<div id="confdiv">
+														<span class="configurazionemultisearchform" id="Configurazione"></span>
+													</div>
+												</td>
+												<td>&nbsp;</td>
+												<td>&nbsp;</td>
+											</tr>											
+											<tr id="TR_COEF_IMP_RIC">
+												<td>
+													<label for="CoeffImpiego">Coefficiente impiego</label>
+												</td>
+												<td>
+													<input type="text" id="CoeffImpiego" name="CoeffImpiego" size="5"/>
+												</td>
+												<td>
+													<input type="checkbox" id="BloccoRicalcolo" name="BloccoRicalcolo"/>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+
+								<tr>
+									<td>
+										<table cellspacing="1" cellpadding="1">
+											<td width="50%" align="left" valign="top">
+												<fieldset>
+													<legend><label id="LabelGroupBoxQuantita"></label></legend>
+													<table	cellspacing="1" cellpadding="1">
+														<tr id="SezUMVen">
+															<!-- Campo Qta Vendita -->
+															<td nowrap="true">
+																<label for="QtaUmVenMag">
+																	Quant. vendita
+																</label>
+															</td>
+															<td>
+																<input type="text" id="QtaUmVenMag" name="QtaUmVenMag" size="12"/>
+															</td>
+															<!-- Combo UM Vendita -->
+															<td>
+																<span class="searchcombobox" id="UmVenMag" name="UmVenMag"/>
+															</td>
+														</tr>
+														<tr id="SezUMPrm">
+															<!-- Campo Qta Primaria -->
+															<td nowrap="true">
+																<label for="QtaUmPrmMag">
+																	Quant. primaria
+																</label>
+															</td>
+															<td>
+																<input type="text" id="QtaUmPrmMag" name="QtaUmPrmMag" size="12"/>
+															</td>
+															<!-- Campo Servizio UM Primaria -->
+															<td nowrap="true" colspan="2">
+																<span class="searchcombobox" id="UmPrmMag" name="UmPrmMag"/>
+																<!--input type="text" id="IdUmPrmMag" name="IdUmPrmMag" size="20"/-->
+															</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr id="SezUMSecondaria" name="SezUMSecondaria" style="display:none">
+															<!-- Campo Qta Secondaria -->
+															<td nowrap="true">
+																<label for="QtaUmSecMag">
+																	Quant. secondaria
+																</label>
+															</td>
+															<td>
+																<input type="text" id="QtaUmSecMag" name="QtaUmSecMag" size="12"/>
+															</td>
+															<!-- Campo Servizio UM Secondaria -->
+															<td nowrap="true" colspan="2">
+																<input type="text" id="IdUmSecMag" name="IdUmSecMag" size="20"/>
+															</td>
+															<td>&nbsp;</td>
+														</tr>
+													</table>
+												</fieldset>
+											</td>
+											<td width="50%">
+												<fieldset>
+													<legend><label id="LabelGroupBoxDateConsegna"></label></legend>
+													<table	cellspacing="1" cellpadding="1">
+														<tr>
+															<!-- Campo Data Consegna Richiesta -->
+															<td nowrap="true">
+																<label for="DataConsegRcs">
+																	Data consegna richiesta
+																</label>
+															</td>
+															<td nowrap="true">
+																<input type="text" id="DataConsegRcs" name="DataConsegRcs" size="12"/>
+															</td>
+															<!-- Campo Settimana Consegna Richiesta -->
+															<td nowrap="true">
+																<label for="SettConsegRcs">
+																	Settimana
+																</label>
+															</td>
+															<td nowrap="true">
+																<input type="text" id="SettConsegRcs" name="SettConsegRcs" size="8"/>
+															</td>
+														</tr>
+														<tr>
+															<!-- Campo Data Consegna Confermata -->
+															<td nowrap="true">
+																<label for="DataConsegPrv">
+																	Data consegna Confermata
+																</label>
+															</td>
+															<td nowrap="true">
+																<input type="text" id="DataConsegPrv" name="DataConsegPrv" size="12"/>
+															</td>
+															<!-- Campo Settimana Consegna Confermata -->
+															<td nowrap="true">
+																<label for="SettConsegPrv">
+																	Settimana
+																</label>
+															</td>
+															<td nowrap="true">
+																<input type="text" id="SettConsegPrv" name="SettConsegPrv" size="8"/>
+															</td>
+														</tr>
+													</table>
+												</fieldset>
+											</td>
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<table>
+											<tr>
+												<!-- Dati Comuni Estesi - Stato -->
+												<td nowrap="true">
+													<table>
+														<tr>
+															<td>
+																<span class="subform" name="DatiComuniEstesiStato" id="DatiComuniEstesiStato"></span>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+							<!-- FINE TABELLA PRINCIPALE -->
+						</span>
+
+						<!-- **************************************************************************************** -->
+						<!-- Cartella Prezzi/Sconti -->
+						<span class="tab" id="PrezziCostoRisorsa">
+							<table cellspacing="1" cellpadding="1">
+               				 	<tr>
+			                    	<td nowrap="true"><label for="CostoRiferimento"></label></td>
+			                    	<td colspan="3"><input type="text" id="CostoRiferimento" name="CostoRiferimento" /></td>
+			                	</tr>
+                				<tr>
+									 <td><label for="SchemaCosto"></label></td>
+                   					 <td colspan="3"><span class="multisearchform" id="SchemaCosto" name="SchemaCosto"/></td>
+								</tr>
+								<tr>
+									 <td><label for="ComponenteCosto"></label></td>
+                   					 <td colspan="3"><span class="multisearchform" id="ComponenteCosto" name="ComponenteCosto"/></td>
+								</tr>
+								<!-- 29032 inizio -->
+								<tr id="TR_MARKUP">
+									 <td><label for="Markup"></label></td>
+                   					 <td colspan="3"><input type="text" id="Markup" name="Markup" /></td>
+								</tr>
+								<!-- 29032 fine -->
+								<tr>
+									<!-- Campo Prezzo -->
+									<td>
+										<label for="Prezzo">Prezzo</label>
+									</td>
+									<td>
+										<input type="text" id="Prezzo" name="Prezzo" size="12"/>
+									</td>
+									<!-- Campo Prezzo Extra -->
+									<td>
+										<label for="PrezzoExtra">Prezzo Extra</label>
+									</td>
+                  					<td>&nbsp;&nbsp;</td>
+									<td colspan="2">
+										<input type="text" id="PrezzoExtra" name="PrezzoExtra" size="12"/>
+									</td>
+								</tr>
+								<tr>
+									<td nowrap="true"><label for="TipoPrezzo"></label></td>
+                   					<td colspan="3"><select name="TipoPrezzo" id="TipoPrezzo"><option></option></select></td>
+								</tr>
+								<tr>
+								   	<td nowrap="true"><label for="ProvenienzaPrezzo"></label></td>
+                   					<td><select name="ProvenienzaPrezzo" id="ProvenienzaPrezzo"><option></option></select></td>
+                   					<!-- 31094 inizio -->
+                   					<td id="RicalcolaPrezzoTD" colspan="2">
+                   						<button name="RicalcolaPrezzoBut" id="RicalcolaPrezzoBut" type="button"></button>
+                   					</td>
+                   					<!-- 31094 fine -->
+								</tr>
+							</table>
+						</span>
+
+						<!-- **************************************************************************************** -->
+						<!-- Cartella Commenti/Multimedia -->
+						<span class="tab" id="CommentiMultimediaTab">
+							<table height="20%">
+								<tr>
+									<td nowrap="true">
+										<table cellspacing="1" cellpadding="1">
+											<tr>
+												<td>
+													<span class="subform" id="Commenti"></span>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+							<table>
+								<tr>
+									<td nowrap="true">
+										<label for="DocumentoMM">
+											Documento MM
+										</label>
+									</td>
+									<td nowrap="true">
+										<span class="multisearchform" id="DocumentoMM"></span>
+									</td>
+								</tr>
+								<tr>
+									<td nowrap="true">
+										<label for="Nota">Note</label>
+									</td>
+									<td>
+										<textarea id="Nota" name="Nota" cols="70" rows="2"></textarea>
+									</td>
+								</tr>
+							</table>
+						</span>
+
+						<!-- ************************************************************************************************ -->
+						<!-- Cartella Riepilogo	-->
+						 <span class="tab" id="RiepilogoTab">
+						<table cellspacing="1" cellpadding="1">
+							<tr>
+								<td colspan="2"  width="100%" height="100%">
+									<span class="tabbed" id="tabbedRiepilogo">
+							  			<span class="tab" id="tabRiepilogoGen">
+											<table cellspacing="1" cellpadding="1">
+                        <tr>
+                          <td colspan="2"><input type="checkbox" id="EscRigaOfferta" name="EscRigaOfferta"/></td>
+                        </tr>
+                        <!--<tr>
+                          <td nowrap="true" width="100"><label for="OffertaClienteRiga"></label></td>
+                          <td nowrap="true"><span class="multisearchform" id="OffertaClienteRiga"></span></td>
+                        </tr>-->
+                      </table>
+                    </span>
+                    <span class="tab" id="tabRiepilogoVal">
+										<table style="margin: 7 7 7 7;">
+												<tr>
+                          <td nowrap="true"><label id="LabelValoreTotale"></label></td>
+                          <td><input type ="text" id="ValoreTotale" name="ValoreTotale" size="15"/></td>
+                        </tr>
+                       <tr>
+                          <td nowrap="true"><label id="LabelCosTotale"></label></td>
+                          <td><input type ="text" id="CosTotale" name="CosTotale" size="15"/></td>
+                        </tr>
+                        <tr>
+                          <td nowrap="true"><label id="LabelMdcTotale"></label></td>
+                          <td><input type ="text" id="MdcTotale" name="MdcTotale" size="15"/></td>
+                        </tr>
+                    </table>
+					 					</span>
+                  </span>
+								</td>
+							</tr>
+						</table>
+ 			  </span>
+        <span class="tab" id="TabDes">
+          <table width="98%" border="0" style="margin: 7 7 7 7;">
+            <tr>
+              <td valign="top">
+                <span class="subform" name="GrigliaNLS" id="GrigliaNLS"></span>
+              </td>
+            </tr>
+          </table>
+        </span>
+        <!--<span class="tab" id="TabRigheSec">
+         <table width="98%" border="0" style="margin: 7 7 7 7;">
+            <tr>
+              <td colspan="4" width="100%"><span id="righe" name="righe" class="editgrid"></span></td>
+            </tr>
+         </table>
+        </span>-->
+   </span>
+ </td>
+  </tr>
+  <tr>
+    <td style="height:0">
+      <span class="errorlist" />
+    </td>
+  </tr>
+</table>
+</form>
+</body>
+</html>

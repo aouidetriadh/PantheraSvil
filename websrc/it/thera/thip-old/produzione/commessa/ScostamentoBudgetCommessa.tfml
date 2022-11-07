@@ -1,0 +1,36 @@
+<tfml>
+<form classHdr="ScostamentoBudgetCommessa" name="form" 
+			errorList="yes"
+			menubar="no"
+			submitReset="none"
+			toolbar="no"
+		  	header="it.thera.thip.cs.Header.jsp" 
+		  	footer="it.thera.thip.cs.Footer.jsp"
+		  	webFormModifierClass="it.thera.thip.produzione.commessa.web.ScostamentoBudgetCMMWebFormModifier"
+			jsLibraryName="it/thera/thip/produzione/commessa/ScostamentoBudgetCommessa.js"
+		  	onLoadPresent="yes"
+			>
+			
+
+	<textinput classAD="IdAzienda" name="IdAzienda"/>			
+	<multisearchform classRD="Commessa" name="Commessa" fixedRestrictConditions="IdCommessaAppartenenza,NULL_VALUE" onKeyChange="completaDati()"/>
+	<multisearchform classRD="BudgetCommessa" additionalfields="1" name="BudgetCommessa"
+	                 additionalRestrictConditions="IdCommessa, IdCommessa"/>
+	<multisearchform classRD="ConsuntivoCommessa" additionalfields="1" name="ConsuntivoCommessa" 
+					 additionalRestrictConditions="IdCommessa, IdCommessa"/>
+	<textinput classAD="DataRiferimento" name="DataRiferimento" showCalendarBtn="yes"/>
+	<textinput classAD="DataBudget" name="DataBudget" showCalendarBtn="yes"/>
+	<textinput classAD="DataConsuntivo" name="DataConsuntivo" showCalendarBtn="yes"/>	
+	<button name="IndividuaBUT" script="individua()" resourceFile ="it.thera.thip.produzione.commessa.resources.ScostamentoBudgetCommessa" resourceTooltipID="Individua" resourceID="Individua" />
+	<button name="CaricaBUT" script="carica()" resourceFile ="it.thera.thip.produzione.commessa.resources.ScostamentoBudgetCommessa" resourceTooltipID="Carica" resourceID="Carica" />
+	<checkbox classAD="DettagliCommessa" name="DettagliCommessa"/>
+	<checkbox classAD="DettagliSottoCommesse" name="DettagliSottoCommesse"/>
+	<checkbox classAD="Totali" name="Totali"/>
+	<checkbox classAD="ComponentiPropri" name="ComponentiPropri"/>
+	<checkbox classAD="TotaleGenerale" name="TotaleGenerale"/>
+	<checkbox classAD="SoloComponentiValorizzate" name="SoloComponentiValorizzate"/>
+	<button name="thApplicaScelte" script="carica()" resourceFile ="it.thera.thip.produzione.commessa.resources.ScostamentoBudgetCommessa" resourceTooltipID="ApplicaScelte" resourceID="ApplicaScelteID"/>
+	<mdvbutton name="newMDV"/>	
+	<button name="thStampaRiepCommessa" script="stampaRiepCommessa()" resourceFile ="it.thera.thip.produzione.commessa.resources.ScostamentoBudgetCommessa" resourceTooltipID="StampaRiepCommessa" resourceID="StampaRiepCommessaID"/>
+</form>
+</tfml>

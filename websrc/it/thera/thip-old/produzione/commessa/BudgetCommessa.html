@@ -1,0 +1,121 @@
+<html>
+<head>
+	<title>Budget commessa</title>
+</head>
+<body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0">
+	<form name="form" action="no action">
+		<table height="100%" width="100%" cellspacing="0" cellpadding="0" border="0">
+			<tr><td style="height:0" valign="top"><span class="menubar" id="myMenuBar"></span></td></tr>
+			<tr><td style="height:30px" valign="top"><span class="toolbar" id="myToolBar"></span></td></tr>
+			<tr>
+				<td style="height:0" valign="top">
+					<input id="IdAzienda" name="IdAzienda" type="hidden"/>
+					<input id="IdBudget" name="IdBudget" type="hidden"/>
+					<input id="IdArticolo" name="IdArticolo" type="hidden"/>
+					<input id="IdVersione" name="IdVersione" type="hidden"/>
+					<input id="IdEsternoConfig" name="IdEsternoConfig" type="hidden"/>
+					<input id="IdStabilimento" name="IdStabilimento" type="hidden"/>
+					<input id="IdCommessaAppart" name="IdCommessaAppart" type="hidden"/>
+					<input id="IdCommessaPrm" name="IdCommessaPrm" type="hidden"/>
+					<input id="QuantitaPrm" name="QuantitaPrm" type="hidden"/>
+					<input id="IdUMPrmMag" name="IdUMPrmMag" type="hidden"/>
+				</td>
+			</tr>
+			<tr>
+				<td height="140px" valign="top">
+					<table width="90%" style="margin: 0 0 0 2 ;" border="0">
+						<tr>
+							<td nowrap="true" width="120px"><label for="Commessa">Commessa</label></td>
+							<td nowrap="true" width="500px"><span class="multisearchform" id="Commessa"/></td>
+							<td rowspan="5" valign="top" nowrap="true" width="230px" style="padding-right: 10px;">
+								<fieldset id="Costi"  name="Costi" style="width:100%;"> 
+									<legend align ="top">
+										<label id="CostiLab" name="CostiLab"></label>
+									</legend>
+									<table style="margin: 0 0 0 0;" border="0">
+										<tr>
+											<td nowrap="true"><label for="CostoRiferimento">CostoRiferimento</label></td>
+											<td><input id="CostoRiferimento" name="CostoRiferimento"></input></td>
+										</tr>
+										<tr>
+											<td nowrap="true"><label for="CostoPrimo">CostoPrimo</label></td>
+											<td><input id="CostoPrimo" name="CostoPrimo"></input></td>
+										</tr>
+										<tr>
+											<td nowrap="true"><label for="CostoIndustriale">CostoIndustriale</label></td>
+											<td><input id="CostoIndustriale" name="CostoIndustriale"></input></td>
+										</tr>
+										<tr>
+											<td nowrap="true"><label for="CostoGenerale">CostoGenerale</label></td>
+											<td><input id="CostoGenerale" name="CostoGenerale"></input></td>
+										</tr>
+									</table>	
+								</fieldset>
+							</td>
+							<td rowspan="5" valign="top" nowrap="true">
+								<table style="margin: 0 0 0 0;" border="0">
+									<tr>
+										<td nowrap="true" align="right"><label for="StatoAvanzamento">StatoAvanzamento</label></td>
+										<td ><select name="StatoAvanzamento" id="StatoAvanzamento"></select></td>
+									</tr>
+									<tr>
+										<td colspan="2"><span class="subform" name="DatiComuniEstesi" id="DatiComuniEstesi"/></td>
+									</tr>								
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td nowrap="true"><label for="DataRiferimento">DataRiferimento</label></td>
+							<td nowrap="true"><input id="DataRiferimento" name="DataRiferimento"></input></td>
+						</tr>	
+						<tr>
+							<td nowrap="true"><label for="ComponenteTotali">ComponenteTotali</label></td>
+							<td nowrap="true" colspan="4"><span class="multisearchform" id="ComponenteTotali"/></td>
+						</tr>
+						<tr>
+							<td nowrap="true"><label for="Descrizione">Descrizione</label></td>
+							<td nowrap="true" colspan="4"><input id="Descrizione" name="Descrizione"></input></td>
+						</tr>	
+						<tr>
+							<td nowrap="true"><label for="Preventivo">"Preventivo"</label></td>
+							<td nowrap="true" colspan="4">
+								<span class="multisearchform" id="Preventivo"/>
+								<button name="CaricaBUT" id="CaricaBUT" type="button" style="width:70"></button>
+							</td>
+						</tr>
+						<tr>
+							<td colspan= "4">
+								<table celpadding="10px">
+									<tr>
+										<td width="50px" style="white-space:nowrap;"><input type="checkbox" id="Totali" name="Totali"/></td>
+										<td width="90px" style="white-space:nowrap;"><input type="checkbox" id="DettagliCommessa" name="DettagliCommessa"/></td>
+										<td width="90px" style="white-space:nowrap;"><input type="checkbox" id="DettagliSottoCommesse" name="DettagliSottoCommesse"/></td>
+										<td width="90px" style="white-space:nowrap;"><input type="checkbox" id="ComponentiPropri" name="ComponentiPropri"/></td>
+										<td width="90px" style="white-space:nowrap;"><input type="checkbox" id="SoloComponentiValorizzate" name="SoloComponentiValorizzate"/></td>
+										<!--
+										<td>
+											<button type="button" style="width:26px;height:26px;align:top" name="thApplicaScelte" id="thApplicaScelte">
+												<img border="0" width="16px" height="16px" src="thermweb/image/gui/cnr/Run.gif" />
+											</button>
+										</td>	-->										
+										<td><span class="mdvbutton" id="newMDV" name="newMDV"></span></td>	
+										<td>
+												<button name="AggiornaBUT" id="AggiornaBUT" type="button" style="width:90"></button>
+										</td>										
+									</tr>
+								</table>
+							</td>
+						</tr>												
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<iframe height="100%" width="100%" id="BudgetCommessaDettaglio" name="BudgetCommessaDettaglio" src="" style="border: 0px solid black;margin:0 5px 10px 5px;height: calc(100% - 15px);width: calc(100% - 10px);"></iframe>
+				</td>
+			</tr>
+			<tr><td style="height:0"><span class="errorlist" /></td></tr>
+		</table>
+	</form>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<html>
+<head>
+	<title>StampaRiepilogoCommesse</title>
+</head>
+<body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0">
+
+<form name="StampaRiepilogoCommesse">
+<table height="100%" width="100%" cellspacing="0" cellpadding="2">
+	<tr valign="top" width="100%">
+		<td colspan="3" style="height:0"><span class="menubar" id="myMenuBar"/></td>
+	</tr>
+	<tr valign="top" width="100%">
+		<td colspan="3" style="height:0"><span class="toolbar" id="myToolBar"/></td>
+	</tr>
+	<tr>
+		<td><input type="hidden" id="thReportId" name="thReportId"/></td>
+		<td><input type="hidden" id="IdAzienda" name="IdAzienda"/></td>
+	</tr>
+	<tr>
+		<td width="33%"><label for="TipoStampa">TipoStampa</label></td>
+		<td><select name="TipoStampa" id="TipoStampa"></select></td>
+		<td width="35%"></td>
+	</tr>
+	<tr>
+		<td width="33%"><label for="StatoCommessa">StatoCommessa</label></td>
+		<td><select name="StatoCommessa" id="StatoCommessa"></select></td>
+		<td width="35%"></td>
+	</tr>
+	<!-- 36252 inizio -->
+	<tr>
+		<td></td>
+		<td colspan="2"><input type="checkbox" name="UsaConsuntiviStoricizzati" id="UsaConsuntiviStoricizzati"/></td>
+	</tr>
+	<tr>
+		<td nowrap="true"><label for="DataRiferimento">DataRiferimento</label></td>
+		<td colspan="2" nowrap="true">
+			<input id="DataRiferimento" name="DataRiferimento"></input>
+		</td>
+	</tr>
+	<tr>
+		<td nowrap="true"><label for="Commessa">Commessa</label></td>
+		<td colspan="2" nowrap="true"><span class="multisearchform" id="Commessa"/></td>
+	</tr>
+	<tr>
+		<td nowrap="true"><label for="ConsuntivoCommessa">Consuntivo</label></td>
+		<td colspan="2" nowrap="true"><span class="multisearchform" id="ConsuntivoCommessa"/></td>
+	</tr>
+	<tr>
+		<td nowrap="true"><label for="BudgetCommessa">Budget</label></td>
+		<td colspan="2" nowrap="true"><span class="multisearchform" id="BudgetCommessa"/></td>
+	</tr>
+	<!-- 36252 fine -->
+	<tr>
+		<td width="33%" nowrap="true"><label for="TipoChiusura">TipoChiusura</label></td>
+		<td><select name="TipoChiusura" id="TipoChiusura"></select></td>
+		<td width="35%"></td>
+	</tr>
+        <!--Fix 22273 Inizio-->
+        <tr id="TipoCostiCmmTR" style="display:none">
+		<td width="33%" nowrap="true"><label for="TipologiaCostiCommessa">TipoCostiCommessa</label></td>
+		<td><select name="TipologiaCostiCommessa" id="TipologiaCostiCommessa"></select></td>
+		<td width="35%"></td>
+	</tr>
+        <!--Fix 22273 Fine-->
+	<tr>
+		<td width="33%" nowrap="true"><label for="TipologiaCostoRif">TipologiaCostoRif</label></td>
+		<td><select name="TipologiaCostoRif" id="TipologiaCostoRif"></select></td>
+		<td width="35%"></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<fieldset>
+				<legend align="top" name="CostiConsuntivatiProvLegend"></legend>
+				<table width="100%">
+					<tr>
+						<td width="50%"></td>
+						<td><input type="checkbox" id="CompresoOrdinato" name="CompresoOrdinato"/></td>
+						<td><input type="checkbox" id="CompresoRichiesto" name="CompresoRichiesto"/></td>
+					</tr>
+				</table>
+			</fieldset>
+		</td>
+		<td width="35%"></td>
+	</tr>
+	<tr>
+		<td width="33%"></td>
+		<td><input type="checkbox" id="ExecutePrint" name = "ExecutePrint" /></td>
+		<td width="35%"></td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<table height="100%" width="100%" cellspacing="0" cellpadding="2">
+				<span class="subform" id="CondFiltro"></span>
+			</table>
+		</td>
+	</tr>
+	<tr valign="bottom">
+		<td colspan="4" style="height:0"><span class="errorlist"/></td>
+	</tr>
+</table>
+</form>
+
+</body>
+<script language='JavaScript1.2' type='text/javascript' src='com/thera/thermfw/batch/PrintBatchRunnable.js'></script>
+</html>

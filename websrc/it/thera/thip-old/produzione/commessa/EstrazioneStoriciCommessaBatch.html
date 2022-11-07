@@ -1,0 +1,148 @@
+<html>
+<head>
+	<title>Estrazione storici commessa</title>
+	<style>
+	#myTabbedGeneraleTab_PAGE table{
+		width: 90%;
+	}
+	#myTabbedGeneraleTab_PAGE td:FIRST-OF-TYPE{
+		width: 160px;
+	}
+	</style>
+</head>
+<body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0">
+
+<form name="EstrazioneStoriciCommessaBatch">
+	<table height="100%" width="100%" cellspacing="0" cellpadding="2">
+		<tr>
+			<td style="height:0">
+				<span class="menubar" id="myMenuBar"/>
+			</td>
+		</tr>
+		<tr>
+			<td style="height:0">
+				<span class="toolbar" id="myToolBar"/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<span class="tabbed" id="myTabbed">
+					<span class="tab" id="GeneraleTab">
+						<table style="margin: 7 7 7 7;" cellspacing="2" cellpadding="2">
+							<tr style="display: none">
+								<td>
+									<input type="hidden" id="thReportId" name="thReportId"/>
+								</td>
+								<td>
+									<input type="hidden" id="IdAzienda" name="IdAzienda"/>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="4" width="100%">
+									<fieldset>
+										<legend><label id = "SorgentiLbl"></label></legend>
+										<table width="100%">
+											<tr>
+												<td></td>
+												<td>
+													<input type="checkbox" name="EstrarrePeriodiDefinitivi" id="EstrarrePeriodiDefinitivi"/>
+												</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>
+													<input type="checkbox" name="CommesseProvvisorie" id="CommesseProvvisorie"/>
+												</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>
+													<input type="checkbox" name="StoriciNonCommessa" id="StoriciNonCommessa"/>
+												</td>
+											</tr>																		
+										</table>
+									</fieldset>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" width="100%">
+									<fieldset>
+										<legend><label id = "CostiMancantiLbl"></label></legend>
+										<table width="100%">
+											<tr>
+												<td><label id = "ArticoliLbl"></label></td>
+												<td>
+													<input type="checkbox" name="CostiArticoloDaDocumento" id="CostiArticoloDaDocumento"/>
+												</td>
+												<td nowrap="true">
+													<label for="OrdineRecArticolo"></label>
+												</td>
+												<td>
+													<select name="OrdineRecArticolo" id="OrdineRecArticolo"><option></option></select>
+												</td>
+											</tr>
+											<tr>
+												<td><label id = "RisorseLbl"></label></td>
+												<td>
+													<input type="checkbox" name="CostiRisorsaDaDocumento" id="CostiRisorsaDaDocumento"/>
+												</td>
+												<td nowrap="true">
+													<label for="OrdineRecRisorsa"></label>
+												</td>
+												<td>
+													<select name="OrdineRecRisorsa" id="OrdineRecRisorsa"><option></option></select>
+												</td>
+											</tr>											
+											<tr>
+												<td nowrap="true">
+													<label for="ModalitaCostiMancanti"></label>
+												</td>
+												<td>
+													<select name="ModalitaCostiMancanti" id="ModalitaCostiMancanti"><option></option></select>
+												</td>
+											</tr>
+											<tr>
+												<td nowrap="true">
+													<label for="AmbienteCostiMancanti">AmbienteCostiMancanti</label>
+												</td>
+												<td colspan="3">
+													<span class="multisearchform" name="AmbienteCostiMancanti" id="AmbienteCostiMancanti"/>
+												</td>
+											</tr>
+											<tr>
+												<td nowrap="true">
+													<label for="TipoCostoMancanti">TipoCostoMancanti</label>
+												</td>
+												<td colspan="3">
+													<span class="multisearchform" name="TipoCostoMancanti" id="TipoCostoMancanti"/>
+												</td>
+											</tr>
+										</table>
+									</fieldset>
+								</td>
+							</tr>
+						</table>
+					</span>
+					<span class="tab" id="FiltroTab">
+						<table style="margin: 7 7 7 7;" width="98%">
+							<tr>
+								<td>
+									<span class="subform" id="FiltroAmbienteCosti">
+									</span>
+								</td>
+							</tr>
+						</table>
+					</span>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<td style="height:0"><span class="errorlist" /></td>
+		</tr>
+	</table>
+</form>
+
+</body>
+<script language='JavaScript1.2' type='text/javascript' src='com/thera/thermfw/batch/PrintBatchRunnable.js'></script>
+</html>
+

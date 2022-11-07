@@ -1,0 +1,65 @@
+.pq-state-select.pq-grid-row {
+    background: #9fc3e1;
+    color: white;
+}
+
+.pq-table > .pq-grid-row > .pq-grid-cell.pq-focus{
+    border: 0px solid #666;
+}
+
+textarea.pq-cell-editor {
+  box-shadow: inset 0 0 0 1px #666666;
+}
+
+.pq-theme *:focus {
+  outline: 0px solid #909090;
+}
+
+.RigaNormale {
+	
+}
+
+.RigaTotali {
+	background: #F0F0F0;
+	font-weight: bold;
+}
+
+.RigaCmpPropri {
+	background: #F0F0F0;
+	font-weight: bold;
+}
+
+.RigaSottoCommessa {
+	background: #E5F4FF;
+	font-weight: bold;
+}
+
+.RigaCommessa {
+	background-color: #E5F4FF;
+	font-weight: bold;
+}
+
+.CellaEditabile {
+	background: #FFFFEA;
+}
+
+.CellaCompTotali {
+	font-style: italic;
+}
+
+.CellaTotali {
+	/*font-weight: bold;*/
+}
+
+.CellaDeltaPos {
+	color:green;
+}
+
+.CellaDeltaNeg {
+	color:red;
+}
+
+.pq-state-select .CellaEditabile{
+	background: transparent;
+}
+

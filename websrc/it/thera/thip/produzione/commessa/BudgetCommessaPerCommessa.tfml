@@ -1,0 +1,46 @@
+<tfml>
+<form classHdr="BudgetCommessa" name="form" 
+			errorList="no"
+			menubar="no"
+			submitReset="none"
+			toolbar="no"
+		  	webFormModifierClass="it.thera.thip.produzione.commessa.web.BudgetCommessaPerCMMWebFromModifier"
+			jsLibraryName="it/thera/thip/produzione/commessa/BudgetCommessa.js"
+		  	onLoadPresent="yes"
+			>
+	
+	<textinput classAD="IdAzienda" name="IdAzienda"/>
+	<textinput classAD="IdBudget" name="IdBudget"/>
+	<textinput classAD="IdArticolo" name="IdArticolo"/>
+	<textinput classAD="IdVersione" name="IdVersione"/>
+	<textinput classAD="IdEsternoConfig" name="IdEsternoConfig"/>
+	<textinput classAD="IdStabilimento" name="IdStabilimento"/>
+	<textinput classAD="IdCommessaAppart" name="IdCommessaAppart"/>
+	<textinput classAD="IdCommessaPrm" name="IdCommessaPrm"/>
+	<textinput classAD="QuantitaPrm" name="QuantitaPrm"/>
+	<textinput classAD="IdUMPrmMag" name="IdUMPrmMag"/>
+	
+	<multisearchform classRD="Commessa" name="Commessa" fixedRestrictConditions="IdCommessaAppartenenza,NULL_VALUE" onKeyChange="completaDatiBudget()"/>
+	<combobox classAD="StatoAvanzamento" name="StatoAvanzamento"/>
+	<textinput classAD="DataRiferimento" name="DataRiferimento" showCalendarBtn="yes"/>
+	<textinput classAD="Descrizione" name="Descrizione"/>
+	<multisearchform classRD="ComponenteTotali" name="ComponenteTotali"/>
+	<subform name="DatiComuniEstesi" classCD="DatiComuniEstesi"/>
+	<label name="CostiLab" resourceFile="it.thera.thip.produzione.commessa.resources.BudgetCommessa" resourceID="CostiLbl"/>
+	<textinput classAD="CostoRiferimento" name="CostoRiferimento"/>
+	<textinput classAD="CostoPrimo" name="CostoPrimo"/>
+	<textinput classAD="CostoIndustriale" name="CostoIndustriale"/>
+	<textinput classAD="CostoGenerale" name="CostoGenerale"/>
+	<multisearchform classRD="Preventivo" name="Preventivo" additionalfields="1" additionalRestrictConditions="IdCommessa,IdCommessa;"/>
+	<button name="CaricaBUT" script="caricaPreventivo()" resourceFile ="it.thera.thip.produzione.commessa.resources.BudgetCommessa" resourceTooltipID="Carica" resourceID="Carica" />
+	<checkbox classAD="DettagliCommessa" name="DettagliCommessa"/>
+	<checkbox classAD="DettagliSottoCommesse" name="DettagliSottoCommesse"/>
+	<checkbox classAD="Totali" name="Totali"/>
+	<checkbox classAD="ComponentiPropri" name="ComponentiPropri"/>
+	<checkbox classAD="TotaleGenerale" name="TotaleGenerale"/>
+	<checkbox classAD="SoloComponentiValorizzate" name="SoloComponentiValorizzate"/>
+    <button name="thAggiornaBUT" script="aggiornaBudgetView()" resourceFile ="it.thera.thip.produzione.commessa.resources.BudgetCommessa" resourceTooltipID="Aggiorna" resourceID="AggiornaID" />
+	<mdvbutton name="newMDV"/>
+	<button name="thSalvaBudget" script="salvaBudget()" resourceFile ="it.thera.thip.produzione.commessa.resources.BudgetCommessa" resourceTooltipID="SalvaBudget" resourceID="SalvaBudgetID"/>
+</form>
+</tfml>

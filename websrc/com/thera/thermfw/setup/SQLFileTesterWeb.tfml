@@ -1,0 +1,25 @@
+<tfml>
+<generator type="form"/>
+<form classHdr="SQLFileTesterWeb"
+	    errorList="yes"
+      inputFont="Arial,10"
+      name="SQLFileTesterWeb"
+      menubar="yes"
+      toolbar="yes"
+      header="com.thera.thermfw.common.Header.jsp"
+      footer="com.thera.thermfw.common.Footer.jsp"
+      onLoadPresent="yes"
+      jsLibraryName="com/thera/thermfw/setup/SQLFileTesterWeb.js"
+      servlet="com.thera.thermfw.setup.web.SQLFileTesterWebActionAdapter">
+
+      <combobox name="PlatformType" classAD="PlatformType" onChange="manageGenerateShortNames()"/>
+      <checkbox classAD="GenerateShortNames" name="GenerateShortNames"/>
+      <textinput classAD="SrcFileName" name="SrcFileName"/>
+      <checkbox classAD="TryUpdate" name="TryUpdate"/>
+      <label name="outputLabel" resourceFile="com.thera.thermfw.setup.resources.SQLFileTesterWeb" resourceID="OutputLabel"/>
+      <button name="Importa" resourceFile="com.thera.thermfw.setup.resources.SQLFileTesterWeb" resourceID="Importa" script="runSQLFileTester()"/>
+      <button name="Clear" resourceFile="com.thera.thermfw.setup.resources.SQLFileTesterWeb" resourceID="Clear" script="clearIframe()"/>
+</form>
+</tfml>
+
+

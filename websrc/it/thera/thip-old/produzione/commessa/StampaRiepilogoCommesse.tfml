@@ -1,0 +1,47 @@
+<tfml>
+  <generator type="batchForm"></generator>
+	<form classHdr="StampaRiepilogoCommesse"
+				name="StampaRiepilogoCommesse"
+				errorList="yes"
+				menubar="yes"
+				toolbar="yes"
+				submitReset="none"
+				header="it.thera.thip.cs.Header.jsp"
+				footer="it.thera.thip.cs.Footer.jsp"
+				webFormModifierClass="it.thera.thip.produzione.commessa.web.StampaRiepilogoCommesseWebFormModifier"
+				onLoadPresent="yes"
+				jsLibraryName="it/thera/thip/produzione/commessa/StampaRiepilogoCommesse.js">
+
+		<menubar name="myMenuBar" width="60" color="#000000" background="#A5B6CE">
+			<import file="com/thera/thermfw/batch/PrintRunnableMenu.tfml"/>
+		</menubar>
+
+		<toolbar name="myToolBar" width="24" height="24" imgwidth="16" imgheight="16" color="#f7fbfd" background="#C8D6E1">
+			<import file="com/thera/thermfw/batch/PrintRunnableMenu.tfml"/>
+		</toolbar>
+
+		<textinput name="thReportId" classAD="ReportId"/>
+		<textinput name="IdAzienda" classAD="IdAzienda"/>
+
+		<combobox name="TipoStampa" classAD="TipoStampa"/>
+		<combobox classAD="StatoCommessa" name="StatoCommessa"/>
+		<combobox classAD="TipoChiusura" name="TipoChiusura" onChange="onTipoChiusuraChange()"/>
+		<combobox classAD="TipologiaCostoRif" name="TipologiaCostoRif"/>
+                <combobox classAD="TipologiaCostiCommessa" name="TipologiaCostiCommessa"/> <!--Fix 22273-->
+		<checkbox name="ExecutePrint" classAD="ExecutePrint"/>
+		<subform name="CondFiltro" classCD="CondFiltro"/>
+		<legend name="CostiConsuntivatiProvLegend" resourceFile="it.thera.thip.produzione.commessa.resources.StampaRiepilogoCommesse" resourceID="CostiConsuntivatiProvLegend"/>
+		<checkbox name="CompresoOrdinato" classAD="CompresoOrdinato"/>
+		<checkbox name="CompresoRichiesto" classAD="CompresoRichiesto"/>
+		<!-- 36252 inizio -->
+		<checkbox classAD="UsaConsuntiviStoricizzati" name="UsaConsuntiviStoricizzati" onClick="onUsaConsuntiviAction()"/>
+		<textinput name="DataRiferimento" classAD="DataRiferimento" showCalendarBtn="yes"/>
+		<multisearchform classRD="Commessa" name="Commessa" fixedRestrictConditions="IdCommessaAppartenenza,NULL_VALUE"/>
+		<multisearchform classRD="ConsuntivoCommessa" additionalfields="1" name="ConsuntivoCommessa" 
+	   	 additionalRestrictConditions="IdCommessa, IdCommessa"/>	
+	   	<multisearchform classRD="BudgetCommessa" additionalfields="1" name="BudgetCommessa"
+	     additionalRestrictConditions="IdCommessa, IdCommessa"/>
+	    <!-- 36252 fine -->
+	</form>
+
+</tfml>

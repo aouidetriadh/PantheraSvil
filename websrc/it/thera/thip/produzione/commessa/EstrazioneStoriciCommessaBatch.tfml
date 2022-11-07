@@ -1,0 +1,53 @@
+<tfml>
+	<generator type="batchForm"/>
+	<form classHdr="EstrazioneStoriciCommessa"
+				name="EstrazioneStoriciCommessaBatch"
+				errorList="yes"
+				menubar="yes"
+				toolbar="yes"
+				submitReset="none"
+				header="it.thera.thip.cs.Header.jsp"
+				footer="it.thera.thip.cs.Footer.jsp"
+				jsLibraryName="it/thera/thip/produzione/commessa/EstrazioneStoriciCommessaBatch.js"
+				onLoadPresent="yes"
+	>
+
+		<menubar  name="myMenuBar" width="60" color="#000000" background="#A5B6CE">
+	       	<import file="com/thera/thermfw/batch/PrintRunnableMenu.tfml"/>
+	       </menubar>
+
+	       <toolbar name="myToolBar" width="24" height="24" imgwidth="16" imgheight="16" color="#f7fbfd" background="#C8D6E1">
+	       	<import file="com/thera/thermfw/batch/PrintRunnableMenu.tfml"/>
+	       </toolbar>
+
+
+		<textinput name="thReportId" classAD="ReportId"/>
+		<textinput name="IdAzienda" classAD="IdAzienda"/>
+		<tabbed name="myTabbed" height="100%" width="100%">
+			<tab name="GeneraleTab" resourceFile="it.thera.thip.produzione.commessa.resources.EstrazioneStoriciCommessaBatch" resourceID="GeneraleTab">
+                <label name="SorgentiLbl" resourceFile="it.thera.thip.produzione.commessa.resources.EstrazioneStoriciCommessaBatch" resourceID="LblSorgenti"></label>
+                <checkbox classAD="EstrarrePeriodiDefinitivi" name="EstrarrePeriodiDefinitivi"/>
+                <checkbox classAD="CommesseProvvisorie" name="CommesseProvvisorie"/>
+                <checkbox classAD="StoriciNonCommessa" name="StoriciNonCommessa"/>
+                <label name="CostiMancantiLbl" resourceFile="it.thera.thip.produzione.commessa.resources.EstrazioneStoriciCommessaBatch" resourceID="LblCostiMancanti"></label>
+				<label name="ArticoliLbl" resourceFile="it.thera.thip.produzione.commessa.resources.EstrazioneStoriciCommessaBatch" resourceID="LblArticoli"></label>
+                <label name="RisorseLbl" resourceFile="it.thera.thip.produzione.commessa.resources.EstrazioneStoriciCommessaBatch" resourceID="LblRisorse"></label>                
+                <checkbox classAD="CostiArticoloDaDocumento" name="CostiArticoloDaDocumento" onClick="checkCostiArticoloDaDocumento()"/>
+                <combobox name="OrdineRecArticolo" classAD="OrdineRecArticolo"/>
+                <checkbox classAD="CostiRisorsaDaDocumento" name="CostiRisorsaDaDocumento" onClick="checkCostiRisorsaDaDocumento()"/>
+                <combobox name="OrdineRecRisorsa" classAD="OrdineRecRisorsa"/>
+                <combobox name="ModalitaCostiMancanti" classAD="ModalitaCostiMancanti" onChange="onModalitaCostiMancantiChangeAction()"/>
+                <multisearchform classRD="AmbienteCostiMancanti" name="AmbienteCostiMancanti"/>
+				<multisearchform classRD="TipoCostoMancanti" name="TipoCostoMancanti"/>
+			</tab>
+
+			<tab name="FiltroTab" resourceFile="it.thera.thip.produzione.commessa.resources.EstrazioneStoriciCommessaBatch" resourceID="FiltroTab">
+				<subform name="FiltroAmbienteCosti" classCD="FiltroAmbienteCosti"/>
+			</tab>
+		</tabbed>
+
+	</form>
+
+</tfml>
+
+

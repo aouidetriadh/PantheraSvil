@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from PantheraUpdateWSService WSDL service -->
+
+  <service name="PantheraUpdateWS" provider="java:RPC" style="rpc" use="encoded">
+      <parameter name="wsdlTargetNamespace" value="http://ws.pthupd.base.thip.thera.it"/>
+      <parameter name="wsdlServiceElement" value="PantheraUpdateWSService"/>
+      <parameter name="schemaUnqualified" value="http://ws.pthupd.base.thip.thera.it"/>
+      <parameter name="wsdlServicePort" value="PantheraUpdateWS"/>
+      <parameter name="className" value="it.thera.thip.base.pthupd.ws.PantheraUpdateWS"/>
+      <parameter name="wsdlPortType" value="PantheraUpdateWS"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://ws.pthupd.base.thip.thera.it" xmlns:rtns="http://ws.pthupd.base.thip.thera.it" xmlns:tns2="http://ws.pthupd.base.thip.thera.it" name="checkDependencies" qname="operNS:checkDependencies" returnQName="checkDependenciesReturn" returnType="rtns:ArrayOfDependence" returnItemType="tns2:Dependence" soapAction="">
+        <parameter xmlns:tns="http://ws.pthupd.base.thip.thera.it" qname="dependence" type="tns:ArrayOfDependence"/>
+      </operation>
+      <operation xmlns:operNS="http://ws.pthupd.base.thip.thera.it" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="checkLicence" qname="operNS:checkLicence" returnQName="checkLicenceReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="customerId" type="tns:string"/>
+        <parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="hostName" type="tns:string"/>
+        <parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="ipAddress" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://ws.pthupd.base.thip.thera.it" xmlns:rtns="http://ws.pthupd.base.thip.thera.it" xmlns:tns2="http://ws.pthupd.base.thip.thera.it" name="getMissingFixes" qname="operNS:getMissingFixes" returnQName="getMissingFixesReturn" returnType="rtns:ArrayOfFix" returnItemType="tns2:Fix" soapAction="">
+        <parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="module" type="tns:string"/>
+        <parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="version" type="tns:int"/>
+        <parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="release" type="tns:int"/>
+        <parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="modification" type="tns:int"/>
+        <parameter xmlns:tns="http://ws.pthupd.base.thip.thera.it" qname="fixes" type="tns:ArrayOf_xsd_int"/>
+        <parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="deliveryInfracom" type="tns:boolean"/>
+      </operation>
+      <operation xmlns:operNS="http://ws.pthupd.base.thip.thera.it" xmlns:rtns="http://ws.pthupd.base.thip.thera.it" xmlns:tns2="http://ws.pthupd.base.thip.thera.it" name="getPrerequisites" qname="operNS:getPrerequisites" returnQName="getPrerequisitesReturn" returnType="rtns:ArrayOfFix" returnItemType="tns2:Fix" soapAction="">
+        <parameter xmlns:tns="http://ws.pthupd.base.thip.thera.it" qname="fixes" type="tns:ArrayOf_xsd_int"/>
+      </operation>
+      <operation xmlns:operNS="http://ws.pthupd.base.thip.thera.it" xmlns:rtns="http://ws.pthupd.base.thip.thera.it" name="buildPackage" qname="operNS:buildPackage" returnQName="buildPackageReturn" returnType="rtns:FixPackage" soapAction="">
+        <parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="osName" type="tns:string"/>
+        <parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="rdbmsName" type="tns:string"/>
+        <parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="databaseName" type="tns:string"/>
+        <parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="noTestForced" type="tns:boolean"/>
+        <parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="customizationForced" type="tns:boolean"/>
+      </operation>
+      <operation xmlns:operNS="http://ws.pthupd.base.thip.thera.it" name="downloadCompleted" qname="operNS:downloadCompleted" soapAction="">
+        <parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="packageId" type="tns:int"/>
+      </operation>
+      <parameter name="allowedMethods" value="downloadCompleted checkDependencies buildPackage getMissingFixes checkLicence getPrerequisites"/>
+      <parameter name="scope" value="Session"/>
+
+      <typeMapping xmlns:ns="http://ws.pthupd.base.thip.thera.it" qname="ns:Dependence" type="java:it.thera.thip.base.pthupd.ws.Dependence" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <arrayMapping xmlns:ns="http://ws.pthupd.base.thip.thera.it" xmlns:cmp-ns="http://ws.pthupd.base.thip.thera.it" qname="ns:ArrayOfDependence" type="java:it.thera.thip.base.pthupd.ws.Dependence[]" innerType="cmp-ns:Dependence" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <arrayMapping xmlns:ns="http://ws.pthupd.base.thip.thera.it" xmlns:cmp-ns="http://ws.pthupd.base.thip.thera.it" qname="ns:ArrayOfFix" type="java:it.thera.thip.base.pthupd.ws.Fix[]" innerType="cmp-ns:Fix" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <arrayMapping xmlns:ns="http://ws.pthupd.base.thip.thera.it" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema" qname="ns:ArrayOf_xsd_int" type="java:int[]" innerType="cmp-ns:int" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <typeMapping xmlns:ns="http://ws.pthupd.base.thip.thera.it" qname="ns:Fix" type="java:it.thera.thip.base.pthupd.ws.Fix" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <typeMapping xmlns:ns="http://ws.pthupd.base.thip.thera.it" qname="ns:Documentation" type="java:it.thera.thip.base.pthupd.ws.Documentation" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <typeMapping xmlns:ns="http://ws.pthupd.base.thip.thera.it" qname="ns:FixPackage" type="java:it.thera.thip.base.pthupd.ws.FixPackage" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <arrayMapping xmlns:ns="http://ws.pthupd.base.thip.thera.it" xmlns:cmp-ns="http://ws.pthupd.base.thip.thera.it" qname="ns:ArrayOfDocumentation" type="java:it.thera.thip.base.pthupd.ws.Documentation[]" innerType="cmp-ns:Documentation" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </service>
+</deployment>

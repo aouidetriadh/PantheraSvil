@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws.pthupd.base.thip.thera.it" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws.pthupd.base.thip.thera.it" xmlns:intf="http://ws.pthupd.base.thip.thera.it" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema targetNamespace="http://ws.pthupd.base.thip.thera.it" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="Dependence">
+    <sequence>
+     <element name="closingFix" nillable="true" type="xsd:int"/>
+     <element name="customFix" nillable="true" type="xsd:int"/>
+     <element name="customObject" nillable="true" type="xsd:string"/>
+     <element name="fix" nillable="true" type="xsd:int"/>
+     <element name="object" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfDependence">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="impl:Dependence[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_xsd_int">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:int[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="Documentation">
+    <sequence>
+     <element name="path" nillable="true" type="xsd:string"/>
+     <element name="title" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfDocumentation">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="impl:Documentation[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="Fix">
+    <sequence>
+     <element name="area" nillable="true" type="xsd:string"/>
+     <element name="description" nillable="true" type="xsd:string"/>
+     <element name="documentation" nillable="true" type="impl:ArrayOfDocumentation"/>
+     <element name="domain" nillable="true" type="xsd:string"/>
+     <element name="fix" type="xsd:int"/>
+     <element name="level" nillable="true" type="xsd:string"/>
+     <element name="releaseDate" nillable="true" type="xsd:dateTime"/>
+     <element name="userSelected" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfFix">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="impl:Fix[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="FixPackage">
+    <sequence>
+     <element name="id" nillable="true" type="xsd:int"/>
+     <element name="url" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="downloadCompletedResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="buildPackageResponse">
+
+      <wsdl:part name="buildPackageReturn" type="impl:FixPackage">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPrerequisitesResponse">
+
+      <wsdl:part name="getPrerequisitesReturn" type="impl:ArrayOfFix">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getMissingFixesRequest">
+
+      <wsdl:part name="module" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="version" type="xsd:int">
+
+      </wsdl:part>
+
+      <wsdl:part name="release" type="xsd:int">
+
+      </wsdl:part>
+
+      <wsdl:part name="modification" type="xsd:int">
+
+      </wsdl:part>
+
+      <wsdl:part name="fixes" type="impl:ArrayOf_xsd_int">
+
+      </wsdl:part>
+
+      <wsdl:part name="deliveryInfracom" type="xsd:boolean">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkDependenciesResponse">
+
+      <wsdl:part name="checkDependenciesReturn" type="impl:ArrayOfDependence">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="downloadCompletedRequest">
+
+      <wsdl:part name="packageId" type="xsd:int">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkLicenceRequest">
+
+      <wsdl:part name="customerId" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="hostName" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="ipAddress" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkDependenciesRequest">
+
+      <wsdl:part name="dependence" type="impl:ArrayOfDependence">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="buildPackageRequest">
+
+      <wsdl:part name="osName" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="rdbmsName" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="databaseName" type="xsd:string">
+
+      </wsdl:part>
+
+      <wsdl:part name="noTestForced" type="xsd:boolean">
+
+      </wsdl:part>
+
+      <wsdl:part name="customizationForced" type="xsd:boolean">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPrerequisitesRequest">
+
+      <wsdl:part name="fixes" type="impl:ArrayOf_xsd_int">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkLicenceResponse">
+
+      <wsdl:part name="checkLicenceReturn" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getMissingFixesResponse">
+
+      <wsdl:part name="getMissingFixesReturn" type="impl:ArrayOfFix">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="PantheraUpdateWS">
+
+      <wsdl:operation name="checkDependencies" parameterOrder="dependence">
+
+         <wsdl:input message="impl:checkDependenciesRequest" name="checkDependenciesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:checkDependenciesResponse" name="checkDependenciesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="checkLicence" parameterOrder="customerId hostName ipAddress">
+
+         <wsdl:input message="impl:checkLicenceRequest" name="checkLicenceRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:checkLicenceResponse" name="checkLicenceResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getMissingFixes" parameterOrder="module version release modification fixes deliveryInfracom">
+
+         <wsdl:input message="impl:getMissingFixesRequest" name="getMissingFixesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getMissingFixesResponse" name="getMissingFixesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPrerequisites" parameterOrder="fixes">
+
+         <wsdl:input message="impl:getPrerequisitesRequest" name="getPrerequisitesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getPrerequisitesResponse" name="getPrerequisitesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buildPackage" parameterOrder="osName rdbmsName databaseName noTestForced customizationForced">
+
+         <wsdl:input message="impl:buildPackageRequest" name="buildPackageRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:buildPackageResponse" name="buildPackageResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="downloadCompleted" parameterOrder="packageId">
+
+         <wsdl:input message="impl:downloadCompletedRequest" name="downloadCompletedRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:downloadCompletedResponse" name="downloadCompletedResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="PantheraUpdateWSSoapBinding" type="impl:PantheraUpdateWS">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="checkDependencies">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="checkDependenciesRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ws.pthupd.base.thip.thera.it" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="checkDependenciesResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ws.pthupd.base.thip.thera.it" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="checkLicence">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="checkLicenceRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ws.pthupd.base.thip.thera.it" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="checkLicenceResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ws.pthupd.base.thip.thera.it" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getMissingFixes">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getMissingFixesRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ws.pthupd.base.thip.thera.it" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getMissingFixesResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ws.pthupd.base.thip.thera.it" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPrerequisites">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getPrerequisitesRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ws.pthupd.base.thip.thera.it" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getPrerequisitesResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ws.pthupd.base.thip.thera.it" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buildPackage">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="buildPackageRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ws.pthupd.base.thip.thera.it" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="buildPackageResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ws.pthupd.base.thip.thera.it" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="downloadCompleted">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="downloadCompletedRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ws.pthupd.base.thip.thera.it" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="downloadCompletedResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ws.pthupd.base.thip.thera.it" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="PantheraUpdateWSService">
+
+      <wsdl:port binding="impl:PantheraUpdateWSSoapBinding" name="PantheraUpdateWS">
+
+         <wsdlsoap:address location="http://localhost:8080/THIP/services/PantheraUpdateWS"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

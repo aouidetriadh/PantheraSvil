@@ -1,0 +1,590 @@
+<!--
+Paolo J Franzoni (24 jan 2003)
+aggiunto il checkbox AggiornamentoSaldi
+-->
+
+
+<html>
+
+<head>
+</head>
+
+<body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0">
+
+<form name="form">
+
+<!-- Inizio Fix  03463 A.Boulila -->
+<table height="100%" width="100%" cellspacing="0" cellpadding="2" id="emptyborder" border="0">
+  <tr>
+    <td style="height:0">
+      <span class="menubar" id="myMenuBar" />
+    </td>
+  </tr>
+  <tr>
+    <td style="height:0">
+      <span class="toolbar" id="myToolBar" />
+    </td>
+  </tr>
+  <tr id ="WorkFlowTR" style="display:none">
+    <td style="height:0"><span class="wfpanel" id="WorkFlowf"/></td>
+  </tr>
+  <tr>
+    <td>
+      <span class="tabbed" id="mytabbed">
+        <span class="tab" id="GeneraleTab">
+          <table border="0" style="margin: 0 7 0 7;">
+            <tr style="display: none;">
+              <td>
+                <input type="hidden" id="IdAzienda" name="IdAzienda"/>
+              </td>
+              <td>
+                <input type="hidden" id="NodoDescrizione" name="NodoDescrizione"/>
+              </td>
+			    <td>
+                <input type="hidden" id="flag" name="flag"/>
+              </td>
+            </tr>
+            <tr>
+              <td nowrap="true" width="130">
+                <label for="IdCommessa">Codice</label>
+              </td>
+              <td>
+                <input id="IdCommessa" name="IdCommessa"/>
+              </td>
+            </tr>
+            <span class="subform" name="DescrizioneSubForm" id="DescrizioneSubForm"></span>
+            <tr id="COMMESSA_CA">
+              <td>
+                <label for="IdCommessaCA">Commessa CA</label>
+              </td>
+              <td colspan="2">
+                <span class="multisearchform" id="CommessaCA" name="CommessaCA"/>
+              </td>
+              <td colspan="2">
+                <input type="checkbox" name="CodificaCommessaCA" id="CodificaCommessaCA"/>
+              </td>
+            </tr>
+            <tr id="TR_CMM_APPARTENENZA" style="display: none;">
+              <td nowrap="true">
+                <label for="CommessaAppartenenza">Commessa appartenenza</label>
+              </td>
+              <td colspan="4">
+                <span class="multisearchform" id="CommessaAppartenenza" name="CommessaAppartenenza"/>
+              </td>
+            </tr>
+            <tr>
+              <td nowrap="true">
+                <label for="TipoCommessa">Tipo commessa</label>
+              </td>
+              <!-- Fix 04171 Begin -Jed -->
+              <!--<td colspan="3">-->
+                <td colspan="2"  nowrap="true">
+                  <!-- Fix 04171 End -Jed -->
+                  <span class="multisearchform" id="TipoCommessa" name="TipoCommessa"/>
+                </td>
+                <td nowrap="true" colspan="2">
+                  <input type="checkbox" name="AggiornamentoSaldi" id="AggiornamentoSaldi"/>
+                </td>
+            </tr>
+            <tr>
+              <td nowrap="true" >
+                <label for="AmbienteCommessa">Ambiente commesse</label>
+              </td>
+              <td colspan="4">
+                <span class="multisearchform" id="AmbienteCommessa" name="AmbienteCommessa"/>
+              </td>
+            </tr>
+            <tr>
+              <td nowrap="true">
+                <label for="Stabilimento">Stabilimento</label>
+              </td>
+              <td colspan="4">
+                <span class="multisearchform" id="Stabilimento" name="Stabilimento"/>
+              </td>
+            </tr>
+            <tr>
+              <td nowrap="true">
+                <label for="Articolo">Articolo</label>
+              </td>
+              <td colspan="4">
+                <span class="articolomultisearchform" id="Articolo" name="Articolo"/>
+              </td>
+            </tr>
+            <tr>
+              <td nowrap="true">
+                <label for="VersioneArticolo">Versione</label>
+              </td>
+              <td colspan="4">
+                <span class="multisearchform" id="VersioneArticolo" name="VersioneArticolo"/>
+              </td>
+            </tr>
+            <tr>
+              <td nowrap="true">
+                <label for="Configurazione">Configurazione</label>
+              </td>
+              <td colspan="4">
+                <span class="configurazionemultisearchform" id="Configurazione" name="Configurazione"/>
+              </td>
+            </tr>
+            <tr>
+            <!--Fix 13248 inizio-->
+              <td nowrap="true">
+                <label for="QtaUmPrmMag">Quantita riferimento</label>
+              </td>
+              <td>
+                <input id="QtaUmPrmMag" name="QtaUmPrmMag"/>
+              </td>
+              <td colspan="3">
+              <table>
+              <tr>
+              <td nowrap="true">
+                <label for="UmPrmMag">UmPrmMag</label>
+              </td>
+
+              <!-- Fix 04171 Begin -Jed -->
+              <!--<td>-->
+                <td nowrap="true" colspan="2">
+                  <!-- Fix 04171 End -Jed -->
+                  <span class="multisearchform" id="UmPrmMag" name="UmPrmMag"/>
+                </td>
+                </tr>
+              </table>
+              </td>
+              <!-- Fix 13248 Fine-->
+            </tr>
+            <tr>
+              <td>
+                <label nowrap="true" for="Cliente">Cliente</label>
+              </td>
+              <td colspan="4">
+                <span class="multisearchform" id="Cliente" name="Cliente"/>
+              </td>
+            </tr>
+
+            <!--GN Inizio-->
+            <tr>
+              <td nowrap="true">
+                <label for="CommessaModello">Commessa modello</label>
+              </td>
+              <td colspan="4">
+                <span class="multisearchform" id="CommessaModello" name="CommessaModello"/>
+              </td>
+            </tr>
+            <!--GN fine-->
+
+            <tr>
+            <!--Fix 13248 Inizio-->
+              <td>
+                <label for="StatoAvanzamento">Stato avanzamento</label>
+              </td>
+              <td>
+                 <select name="StatoAvanzamento" id="StatoAvanzamento"><option></option></select>
+              </td>
+              <td>
+                 <table>
+                     <span class="subform" name="Stato" id="Stato"></span>
+                  </table>
+              </td>
+              <!--Fix 13248 Fine-->
+             </tr>
+          </table>
+       </span>
+       <span class="tab" id="DatiGestionaliTab">
+         <table border="0" style="margin: 0 7 0 7;">
+           <!--Fix 04171 Begin -Jed -->
+           <!--<tr>-->
+           <tr style="display: none;">
+             <!--Fix 04171 Begin -Jed -->
+             <td nowrap="true" width="140">
+               <label nowrap="true" for="CommessaPrincipale">Commessa principale</label>
+             </td>
+             <td colspan="3">
+               <span class="multisearchform" id="CommessaPrincipale" name="CommessaPrincipale"/>
+             </td>
+           </tr>
+           <tr>
+             <td>
+               <label nowrap="true" for="ResponsabileCommessa">Responsabile commessa</label>
+             </td>
+             <td colspan="3" nowrap="true">
+               <span class="multisearchform" id="ResponsabileCommessa" name="ResponsabileCommessa"/>
+             </td>
+           </tr>
+           <tr>
+             <td>
+               <label nowrap="true" for="ResponsabilePreventivaz">Responsabile preventivazione</label>
+             </td>
+             <td colspan="3" nowrap="true">
+               <span class="multisearchform" id="ResponsabilePreventivaz" name="ResponsabilePreventivaz"/>
+             </td>
+           </tr>
+           <tr id="VisOrdEff">
+             <td colspan="4">
+               <FIELDSET name="OrdineVendita" width="100%">
+                 <LEGEND align="top">
+                   <label id="OrdineVendita">Ordine vendita</label>
+                 </LEGEND>
+                 <table border="0" cellpadding="0" cellspacing="0" style="margin: 0 0 0 7;">
+                   <tr>
+                     <td width="135">
+                       <label nowrap="true" for="Ordine">Ordine</label>
+                     </td>
+                     <td>
+                       <span class="multisearchform" id="Ordine" name="Ordine"/>
+                     </td>
+					 <!-- 15938 begin -->
+					 <td id="GenOrdVenTR" style="width:20px">
+					 	<!-- 31460 inizio -->
+						<button class="thShowBut" name="GenOrdVenBUT" id="GenOrdVenBUT" type="button" style="width:16px;height:16px;align:top" >							
+		   					<img border="0" width="16px" height="16px" src="it/thera/thip/base/commessa/images/OrdVenOk.gif" />		   					
+						</button>
+						<!-- 31460 fine -->
+					 </td>
+					  <!-- 15938 end -->
+                   </tr>
+                   <tr>
+                     <td>
+                       <label nowrap="true" for="RigaOrdine">Riga</label>
+                     </td>
+                     <td>
+                       <span class="multisearchform" id="RigaOrdine" name="RigaOrdine"/>
+                     </td>
+                   </tr>
+                 </table>
+               </FIELDSET>
+             </td>
+           </tr>
+           <tr id="VisOrdRio" style="display:none">
+             <td nowrap="true"><label for="RifOrdineRiorg">RifOrdineRiorg</label></td>
+             <td><input id="RifOrdineRiorg" name="RifOrdineRiorg"/></td>
+           </tr>
+           <tr>
+             <td nowrap="true">
+               <label for="DataApertura">Data apertura</label>
+             </td>
+             <td>
+               <input id="DataApertura" name="DataApertura"/>
+             </td>
+           </tr>
+           <tr>
+             <td nowrap="true">
+               <label for="DataConferma">Codice</label>
+             </td>
+             <td>
+               <input id="DataConferma" name="DataConferma"/>
+             </td>
+           </tr>
+           <tr>
+             <td nowrap="true">
+               <label for="DataInizioPrevista">Codice</label>
+             </td>
+             <td>
+               <input id="DataInizioPrevista" name="DataInizioPrevista"/>
+             </td>
+             <td nowrap="true">
+               <label for="DataFinePrevista">Data fine prevista</label>
+             </td>
+             <td>
+               <input id="DataFinePrevista" name="DataFinePrevista"/>
+             </td>
+           </tr>
+           <!--span class="subform" name="DatePreviste" id="DatePreviste"></span-->
+           <!--span class="subform" name="Validita" id="Validita"></span-->
+           <tr>
+             <td nowrap="true">
+               <label for="DataPrimaAttivita">Data prima attivita</label>
+             </td>
+             <td>
+               <input id="DataPrimaAttivita" name="DataPrimaAttivita"/>
+             </td>
+             <td nowrap="true">
+               <label for="DataUltimaAttivita">Data ultima attivita</label>
+             </td>
+             <td>
+               <input id="DataUltimaAttivita" name="DataUltimaAttivita"/>
+             </td>
+           </tr>
+           <!-- 33950 inizio -->
+           <tr>
+             <td nowrap="true">
+               <label for="DataEstrazioneStorici">Data estrazione storici</label>
+             </td>
+             <td>
+               <input id="DataEstrazioneStorici" name="DataEstrazioneStorici"/>
+             </td>
+           </tr>
+           <!-- 33950 fine -->
+           <tr>
+             <td nowrap="true">
+               <label for="DataChiusuraTecnica">Data chiusura tecnica</label>
+             </td>
+             <td>
+               <input id="DataChiusuraTecnica" name="DataChiusuraTecnica"/>
+             </td>
+           </tr>
+           <tr>
+             <td nowrap="true">
+               <label for="DataChiusuraOperativa">Data chiusura operativa</label>
+             </td>
+             <td>
+               <input id="DataChiusuraOperativa" name="DataChiusuraOperativa"/>
+             </td>
+           </tr>
+           <tr>
+             <td nowrap="true">
+               <label for="DataChiusura">Data chiusura</label>
+             </td>
+             <td>
+               <input id="DataChiusura" name="DataChiusura"/>
+             </td>
+           </tr>
+           <tr>
+             <td nowrap="true">
+               <label for="PianoFatturazione">Piano fatturazione</label>
+             </td>
+             <td>
+               <select name="PianoFatturazione" id="PianoFatturazione"><option></option></select>
+             </td>
+             <!--Fix 04171 Begin -Jed-->
+             <!--</tr>
+
+             <tr>
+               <td></td>		-->
+               <!--Fix 04171 End -Jed-->
+               <td colspan="2">
+                 <input type="checkbox" name="ChiudiOrdUltimaFat" id="ChiudiOrdUltimaFat"/>
+               </td>
+             </tr>
+         </table>
+         </span>
+
+         <!--Fix 19897 inizio-->
+         <span class="tab" id="CIGCUP">
+          <table border="0" style="margin: 7 7 7 7;" width="90%">
+          <!--Fix 20785 inizio-->
+          <tr>
+              <td nowrap="true"><label for="CodiceCUP"></label></td>
+              <td><input id="CodiceCUP" name="CodiceCUP"/></td>
+              <td nowrap="true"><label for="CodiceCIG"></label></td>
+              <td><input id="CodiceCIG" name="CodiceCIG"/></td>
+            </tr>
+            <!--tr>
+              <td colspan="4">
+                  <FIELDSET name="field1"><LEGEND align = "top"><label id="DatiOrdAcq" name="DatiOrdAcq"></label></LEGEND>
+                   <table>
+                    <tr>
+                       <td nowrap="true"><label for="NumeroDocOrdAcq"></label></td>
+                       <td><input id="NumeroDocOrdAcq" name="NumeroDocOrdAcq"/></td>
+                       <td nowrap="true"><label for="DataDocOrdAcq"></label></td>
+                       <td><input id="DataDocOrdAcq" name="DataDocOrdAcq"/></td>
+                       <td nowrap="true"><label for="IdCommConvOrdAcq"></label></td>
+                       <td><input id="IdCommConvOrdAcq" name="IdCommConvOrdAcq"/></td>
+                     </tr>
+                   </table>
+                 </FIELDSET>
+                 <FIELDSET name="field2"><LEGEND align = "top"><label id="DatiCont" name="DatiCont"></label></LEGEND>
+                   <table>
+                    <tr>
+                       <td nowrap="true"><label for="NumeroDocContratto"></label></td>
+                       <td><input id="NumeroDocContratto" name="NumeroDocContratto"/></td>
+                       <td nowrap="true"><label for="DataDocContratto"></label></td>
+                       <td><input id="DataDocContratto" name="DataDocContratto"/></td>
+                       <td nowrap="true"><label for="IdCommConvContratto"></label></td>
+                       <td><input id="IdCommConvContratto" name="IdCommConvContratto"/></td>
+                     </tr>
+                   </table>
+                 </FIELDSET>
+                 <FIELDSET name="field3"><LEGEND align = "top"><label id="DatiConv" name="DatiConv"></label></LEGEND>
+                   <table>
+                    <tr>
+                       <td nowrap="true"><label for="NumeroDocumento"></label></td>
+                       <td><input id="NumeroDocumento" name="NumeroDocumento"/></td>
+                       <td nowrap="true"><label for="DataDocumento"></label></td>
+                       <td><input id="DataDocumento" name="DataDocumento"/></td>
+                       <td nowrap="true"><label for="IdCommConven"></label></td>
+                       <td><input id="IdCommConven" name="IdCommConven"/></td>
+                     </tr>
+                   </table>
+                 </FIELDSET>
+                 <FIELDSET name="field4"><LEGEND align = "top"><label id="DatiRicez" name="DatiRicez"></label></LEGEND>
+                   <table>
+                    <tr>
+                       <td nowrap="true"><label for="NumeroDocRicezione"></label></td>
+                       <td><input id="NumeroDocRicezione" name="NumeroDocRicezione"/></td>
+                       <td nowrap="true"><label for="DataDocRicezione"></label></td>
+                       <td><input id="DataDocRicezione" name="DataDocRicezione"/></td>
+                       <td nowrap="true"><label for="IdCommConvRicezione"></label></td>
+                       <td><input id="IdCommConvRicezione" name="IdCommConvRicezione"/></td>
+                     </tr>
+                   </table>
+                 </FIELDSET>
+                 <FIELDSET name="field5"><LEGEND align = "top"><label id="DatiFattColl" name="DatiFattColl"></label></LEGEND>
+                   <table>
+                    <tr>
+                       <td nowrap="true"><label for="NumeroDocFatColl"></label></td>
+                       <td><input id="NumeroDocFatColl" name="NumeroDocFatColl"/></td>
+                       <td nowrap="true"><label for="DataDocFatColl"></label></td>
+                       <td><input id="DataDocFatColl" name="DataDocFatColl"/></td>
+                       <td nowrap="true"><label for="IdCommConvFatColl"></label></td>
+                       <td><input id="IdCommConvFatColl" name="IdCommConvFatColl"/></td>
+                     </tr>
+                   </table>
+                 </FIELDSET>
+              </td>
+            </tr-->
+			<!--31437 inizio-->
+			<tr>
+				<td colspan="4">
+					<span id="DocumentiCollegate" class="editgrid"></span>
+				</td>
+			</tr>
+			<!--31437 fine-->
+            <!--Fix 20785 fine-->
+            <!--<tr>
+              <td nowrap="true"><label for="TipoGestioneCigCup">Piano fatturazione</label></td>
+              <td><select name="TipoGestioneCigCup" id="TipoGestioneCigCup"><option></option></select></td>
+            </tr>
+            <tr>
+              <td nowrap="true"><label for="NumeroDocumento"></label></td>
+              <td><input id="NumeroDocumento" name="NumeroDocumento"/></td>
+              <td nowrap="true"><label for="DataDocumento"></label></td>
+              <td><input id="DataDocumento" name="DataDocumento"/></td>
+            </tr>
+            <tr>
+              <td nowrap="true"><label for="NumeroItem"></label></td>
+              <td><input id="NumeroItem" name="NumeroItem"/></td>
+            </tr>
+            <tr>
+              <td nowrap="true"><label for="IdCommConven"></label></td>
+              <td><input id="IdCommConven" name="IdCommConven"/></td>
+            </tr>
+            <tr>
+              <td nowrap="true"><label for="CodiceCUP"></label></td>
+              <td><input id="CodiceCUP" name="CodiceCUP"/></td>
+              <td nowrap="true"><label for="CodiceCIG"></label></td>
+              <td><input id="CodiceCIG" name="CodiceCIG"/></td>
+            </tr>Fix 20785-->
+           </table>
+         </span>
+         <!--Fix 19897 fine-->
+
+		 <!-- 35382 inizio -->
+		 <span class="tab" id="BudgetTab" name="BudgetTab">
+		 	<table border="0" style="margin: 0 0 0 0;width:calc(100% - 1px); height:calc(100% - 4px); " >
+            	<tr>
+					<td>
+			 			<iframe height="100%" width="100%" id="BudgetCommessaFrame" name="BudgetCommessaFrame" src="" style="border:0px solid white;"></iframe>
+			 		</td>
+			 	</tr>
+			 	<tr id="TR_CREA_BUDGET" style="display:none" valign="top">
+			 		<td>
+			 			<button name="CreaBudgetButton" id="CreaBudgetButton" type="button" style="width:140"></button> 		
+			 		</td>
+			 	</tr>
+			 </table>
+		 </span>
+		 <!-- 35382 fine -->
+         <span class="tab" id="PianoFatturazioneTab">
+         <table border="0" style="margin: 7 7 7 7;">
+           <tr>
+				<!-- Fix 29025 inizio -->
+				<td>
+					<label for="TipoPiano">Tipologia Piano</label>
+				</td>
+				<td>
+					<select name="TipoPiano" id="TipoPiano"><option></option></select>
+				</td>
+				<!-- Fix 29025 fine -->
+             <td nowrap="true" id="VisValEffLabel" style="display:block">
+               <label for="ValoreTotaleOrdine">Valore totale ordine</label>
+             </td>
+             <td id="VisValEff" style="display:block">
+               <input id="ValoreTotaleOrdine" name="ValoreTotaleOrdine"/>
+             </td>
+             <td nowrap="true" id="VisValRioLabel" style="display:none">
+               <label for="ValoreOrdRiorg">ValoreOrdRiorg</label>
+             </td>
+             <td id="VisValRio" style="display:none">
+               <input id="ValoreOrdRiorg" name="ValoreOrdRiorg"/>
+             </td>
+       	   <!-- Fix 29025 inizio -->
+           </tr>
+           <tr>
+				<td></td>
+				<td>
+					<input type="checkbox" name="UtilizzaContoAnticipi" id="UtilizzaContoAnticipi"/>
+				</td>
+       	   <!-- Fix 29025 fine -->
+
+             <td nowrap="true">
+               <label for="ValoreTotaleRate">Valore totale rate</label>
+             </td>
+             <td>
+               <input id="ValoreTotaleRate" name="ValoreTotaleRate"/>
+             </td>
+           </tr>
+           <tr>
+             <td colspan="5">
+               <span class="editgrid" id="RateCommesse" name = "RateCommesse"></span>
+             </td>
+           </tr>
+         </table>
+         </span>
+         <span class="tab" id="CommentiTab">
+         <table width="97%" border="0" style="margin: 7 7 7 7;">
+           <span class="subform" name="Commenti" id="Commenti"></span>
+         </table>
+         <table border="0" style="margin: 7 7 7 7;">
+           <tr>
+             <td nowrap="true">
+               <label for="DocumentoMM">Documento multimediale</label>
+             </td>
+             <td>
+               <span class="multisearchform" id="DocumentoMM" name="DocumentoMM"/>
+             </td>
+           </tr>
+           <td nowrap="true">
+             <label for="Note">Note</label>
+           </td>
+           <td>
+             <textarea id="Note" name="Note" cols="80" rows="2"/>
+           </td>
+         </table>
+         </span>
+         <span class="tab" id="tabExtension">
+           <span id="ext" class="extension"></span>
+         </span>
+         <span class="tab" id="DescrizioneTab">
+         <table width="98%" border="0" style="margin: 7 7 7 7;">
+           <tr>
+             <td valign="top">
+               <span class="subform" name="DescrizioneGriglia" id="DescrizioneGriglia"></span>
+             </td>
+           </tr>
+         </table>
+         </span>
+      </span><!-- Fine Fix 03463 A.Boulila -->
+    </td>
+  </tr>
+  <tr>
+    <td style="height:0">
+      <span class="errorlist" />
+    </td>
+  </tr>
+  <!--Fix 04171 Begin -Jed -->
+  <tr><td style="height:0"><iframe frameborder="0" height="0" id="displayTabPianif" name="displayTabPianif" style="visibility:hidden;" width="0"></iframe></td></tr>
+  <!--Fix 04171 End -Jed -->
+</table>
+
+</form>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

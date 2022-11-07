@@ -1,0 +1,53 @@
+<html>
+<head>
+	<title>Evoluzione budget commessa</title>
+</head>
+<body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0">
+	<form name="form" action="no action">
+		<table height="100%" width="100%" cellspacing="2" cellpadding="2" border="0">
+			<tr>
+				<td height="90px" valign="top">
+					<table width="90%" style="margin: 0 0 0 0 ;">
+						<tr>
+							<td nowrap="true" width="110px"><label for="Commessa">Commessa</label></td>
+							<td nowrap="true" colspan="3"><span class="multisearchform" id="Commessa"/></td>
+						</tr>
+						<tr>
+							<td nowrap="true"><label for="DataInizio">IntervalloAnalisi</label></td>
+							<td nowrap="true" colspan="3">
+								<input id="DataInizio" name="DataInizio"></input>
+								<input id="DataFine" name="DataFine"></input>
+							</td>				
+						</tr>			
+						<tr>			
+							<td height="25px" colspan="4" valign="top">
+								<table style="margin-left: 5px;">
+									<tr>
+										<td width="50px" style="white-space:nowrap;"><input type="checkbox" id="Totali" name="Totali"/></td>
+										<td width="90px" style="white-space:nowrap;"><input type="checkbox" id="DettagliCommessa" name="DettagliCommessa"/></td>
+										<td width="90px" style="white-space:nowrap;"><input type="checkbox" id="DettagliSottoCommesse" name="DettagliSottoCommesse"/></td>
+										<td width="90px" style="white-space:nowrap;"><input type="checkbox" id="ComponentiPropri" name="ComponentiPropri"/></td>
+										<td width="90px" style="white-space:nowrap;"><input type="checkbox" id="SoloComponentiValorizzate" name="SoloComponentiValorizzate"/></td>
+										<td>
+											<button type="button" style="width:26px;height:26px;align:top" name="thApplicaScelte" id="thApplicaScelte">
+												<img border="0" width="16px" height="16px" src="thermweb/image/gui/cnr/Run.gif" />
+											</button>
+										</td>											
+										<td><span class="mdvbutton" id="newMDV" name="newMDV"></span></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<iframe height="100%" width="100%" id="EvoluzioneBudgetCommessaDettaglio" name="EvoluzioneBudgetCommessaDettaglio" style="border: 0px solid black;margin:0 5px 10px 5px;height: calc(100% - 15px);width: calc(100% - 10px);" src=""></iframe>
+				</td>
+			</tr>
+			<tr><td style="height:0"><span class="errorlist" /></td></tr>			
+		</table>
+	</form>
+</body>
+</html>

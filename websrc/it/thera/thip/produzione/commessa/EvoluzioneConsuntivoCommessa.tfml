@@ -1,0 +1,28 @@
+<tfml>
+<form classHdr="EvoluzioneConsunCommessa" name="form" 
+			errorList="yes"
+			menubar="no"
+			submitReset="none"
+			toolbar="no"
+		  	header="it.thera.thip.cs.Header.jsp" 
+		  	footer="it.thera.thip.cs.Footer.jsp"
+		  	webFormModifierClass="it.thera.thip.produzione.commessa.web.EvoluzioneConsuntivoCMMWebFormModifier"
+			jsLibraryName="it/thera/thip/produzione/commessa/EvoluzioneConsuntivoCommessa.js"
+		  	onLoadPresent="yes"
+			>
+			
+
+	<textinput classAD="IdAzienda" name="IdAzienda"/>			
+	<multisearchform classRD="Commessa" name="Commessa" fixedRestrictConditions="IdCommessaAppartenenza,NULL_VALUE" onKeyChange="completaDati()"/>
+	<textinput classAD="DataInizio" name="DataInizio" showCalendarBtn="yes"/>
+	<textinput classAD="DataFine" name="DataFine" showCalendarBtn="yes"/>
+	<checkbox classAD="DettagliCommessa" name="DettagliCommessa"/>
+	<checkbox classAD="DettagliSottoCommesse" name="DettagliSottoCommesse"/>
+	<checkbox classAD="Totali" name="Totali"/>
+	<checkbox classAD="ComponentiPropri" name="ComponentiPropri"/>
+	<checkbox classAD="TotaleGenerale" name="TotaleGenerale"/>
+	<checkbox classAD="SoloComponentiValorizzate" name="SoloComponentiValorizzate"/>
+	<button name="thApplicaScelte" script="carica()" resourceFile ="it.thera.thip.produzione.commessa.resources.EvoluzioneConsuntivoCommessa" resourceTooltipID="ApplicaScelte" resourceID="ApplicaScelteID"/>
+	<mdvbutton name="newMDV"/>	
+</form>
+</tfml>

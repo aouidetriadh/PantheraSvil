@@ -1,0 +1,54 @@
+<tfml>
+
+	<form classHdr="ComponenteCosto"
+				errorList="yes"
+				inputFont="Arial,10"
+				menubar="yes"
+				name="form1"
+				submitReset="none"
+				toolbar="yes"
+				servlet="com.thera.thermfw.web.servlet.FormActionAdapter"
+				jsLibraryName="it/thera/thip/datiTecnici/costi/ComponenteCosto.js"
+				onLoadPresent="yes"
+				header="it.thera.thip.cs.Header.jsp"
+				footer="it.thera.thip.cs.Footer.jsp">
+
+		<menubar name="myMenuBar" width="60" color="#000000" background="#A5B6CE">
+			<import file="it/thera/thip/cs/defObjMenu.tfml"/>
+		</menubar>
+
+		<toolbar name="myToolBar" width="24" height="24" imgwidth="16" imgheight="16" color="#f7fbfd" background="#C8D6E1">
+			<import file="it/thera/thip/cs/defObjMenu.tfml"/>
+		</toolbar>
+
+		<textinput classAD="IdAzienda" name="T0"/>
+		<tabbed name="mytabbed" height="100%" width="100%">
+			<tab name="tab1" resourceFile="it.thera.thip.datiTecnici.costi.resources.ComponenteCosto" resourceID="Componente">
+				<textinput classAD="IdComponenteCosto" name="T1"/>
+				<subform classCD="Descrizione" name="T2"/>
+				<combobox classAD="TipoComponente" name="T3"/>
+				<combobox classAD="Provenienza" name="T4" onChange="onChangeProvenienza()"/>
+				<combobox classAD="Criticita" name="T5"/>
+				<multisearchform classRD="Formula" name="T6"/>
+				<!-- 33950 inizio -->
+				<label resourceFile="it.thera.thip.datiTecnici.costi.resources.ComponenteCosto" resourceID="Commessa" name="CommessaLabel"/>
+				<checkbox classAD="GestioneATempo" name="GestioneATempo"/>
+				<multisearchform classRD="TipoCosto" name="TipoCosto"/>
+				<combobox classAD="TipoRisorsa" name="TipoRisorsa" onChange="filedsClear()"/>
+				<combobox classAD="LivelloRisorsa" name="LivelloRisorsa" onChange="filedsClear()"/>
+				<multisearchform classRD="Risorsa" name="Risorsa"/>
+				<textinput classAD="CostoUnitario" name="CostoUnitario"/>
+				<!-- 33950 fine -->
+				<subform classCD="DatiComuniEstesi" name="T7"/>
+			</tab>
+			<tab name="tab3" resourceFile="it.thera.thip.datiTecnici.costi.resources.ComponenteCosto" resourceID="TipiCosto">
+				<doublelist name="T9" classCD="TipiCosto" visiblerows="15" cols="25" displayClassAD="Description" getAvailableElements="getTipiCostoAvailable" modifyButton="yes"/>
+			</tab>
+			<tab name="tab2" resourceFile="it.thera.thip.cs.resources.Cs" resourceID="DescrizioniNLS">
+				<subform classCD="Descrizione" name="T8" formJSPName="it/thera/thip/cs/DescrizioneInLingua.jsp"/>
+			</tab>
+		</tabbed>
+
+	</form>
+
+</tfml>

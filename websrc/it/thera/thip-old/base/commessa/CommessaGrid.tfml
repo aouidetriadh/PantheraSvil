@@ -1,0 +1,21 @@
+<tfml>
+<generator type="gridForm"/>
+<form classHdr="" name="defGrid" servlet="com.thera.thermfw.web.servlet.GridActionAdapter" menubar="yes" errorList="yes" toolbar="yes">
+
+<gridform classHdr="" menubar="yes" settingbar="yes" toolbar="yes" type="list">
+
+<menubar name="gridMenubar" width="100" color="#000000" background="#A5B6CE">
+  <import file="com/thera/thermfw/common/defGridMenu.tfml"/>
+</menubar>
+
+<toolbar name="gridToolbar" width="24" height="24" imgwidth="16" imgheight="16" color="#f7fbfd" background="#C8D6E1">
+  <import file="com/thera/thermfw/common/defGridMenu.tfml"/>
+</toolbar>
+
+<settingbar name="gridSettingbar" width="24" height="24" imgwidth="16" imgheight="16" color="#f7fbfd" background="#C8D6E1">
+  <import file="com/thera/thermfw/common/defGridMenu.tfml"/>
+</settingbar>
+
+</gridform>
+</form>
+</tfml>

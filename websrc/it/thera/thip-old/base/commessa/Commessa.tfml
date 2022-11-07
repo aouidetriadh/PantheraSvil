@@ -1,0 +1,174 @@
+<tfml>
+<generator type="indipendentRowForm"/>
+<form 	classHdr="Commessa" name="form"
+      	errorList="yes" menubar="yes" toolbar="yes" submitReset="none"
+		jsLibraryName="it/thera/thip/base/commessa/Commessa.js"
+		onLoadPresent="yes"
+		collector="it.thera.thip.base.commessa.web.CommessaDataCollector"
+		webFormModifierClass="it.thera.thip.base.commessa.web.CommessaWebFromModifier"
+		servlet="it.thera.thip.base.commessa.web.CommessaActionAdapter">
+
+<menubar  name="myMenuBar">
+  <import file="it/thera/thip/cs/defObjMenu.tfml"/>
+</menubar>
+
+<toolbar name="myToolBar" imgwidth="16" imgheight="16">
+  <import file="it/thera/thip/cs/defObjMenu.tfml"/>
+</toolbar>
+<wfpanel name="WorkFlowf" classCD="WfStatus" workflow="yes" realStatus="no"/>
+<tabbed name="mytabbed" height="100%" width="100%">
+  <tab name="GeneraleTab" resourceFile="it.thera.thip.cs.resources.Cs" resourceID="DatiGenerali">
+
+		<textinput classAD="IdAzienda" id="IdAzienda" name="IdAzienda" />
+		<textinput classAD="IdCommessa" name="IdCommessa" id="IdCommessa"/>
+        <subform classCD="Descrizione" name="DescrizioneSubForm"/>
+		<textinput classAD="NodoDescrizione" name="NodoDescrizione" id="NodoDescrizione"/>
+		<!-- Inizio Fix 03463 A.Boulila -->
+		<label name="OrdineVendita" resourceFile="it.thera.thip.base.commessa.resources.Commessa" resourceID="OrdineVendita"/>
+		<multisearchform classRD="CommessaAppartenenza" name="CommessaAppartenenza" onKeyChange="onCommessaAppartenenzaChangeAction()"/>
+		<multisearchform classRD="TipoCommessa" name="TipoCommessa" onKeyChange="onTipoCommessaChangeAction()"/>
+		<multisearchform classRD="AmbienteCommessa" name="AmbienteCommessa" onKeyChange="onAmbienteCommessaChangeAction()"/>
+		<multisearchform classRD="Stabilimento" name="Stabilimento"/>
+		<articolomultisearchform classRD="Articolo" name="Articolo" onKeyChange="onArticoloChangeAction()"/>
+		<multisearchform classRD="VersioneArticolo" name="VersioneArticolo"/>
+		<configurazionemultisearchform 	classRD="Configurazione"
+										name="Configurazione"
+										descCols="50"
+										additionalRestrictConditions="IdArticolo,IdArticolo"
+										fixedRestrictConditions="DatiComuniEstesi.Stato,V"
+										editGridActionAdapter="it.thera.thip.datiTecnici.configuratore.web.ConfigurazioneRicGridActionAdapter"
+										extraRelatedClassAD = "IdAzienda,IdConfigurazione"/>
+		<textinput classAD="QtaUmPrmMag" id="QtaUmPrmMag" name="QtaUmPrmMag"/>
+		<multisearchform classRD="UmPrmMag" name="UmPrmMag"/>
+		<combobox classAD="StatoAvanzamento" name="StatoAvanzamento" onChange="onStatoAvanzChangeAction()"/>
+		<multisearchform classRD="Cliente" name="Cliente" editbutton="no"  />
+		<!-- Inizio GN -->
+		<multisearchform classRD="CommessaModello" name="CommessaModello"/>
+        <!-- Fine GN -->
+
+        <checkbox classAD="AggiornamentoSaldi" name="AggiornamentoSaldi" />
+	    <!--subform classCD="Validita" name="Validita"/-->
+        <subform classCD="DatiComuniEstesi" name="Stato"/>
+
+
+		<multisearchform idCols="10" descCols="40" classRD="CommessaCA" name="CommessaCA" editbutton="no" />
+        <checkbox classAD="CodificaCommessaCA" name="CodificaCommessaCA" onClick="clickCodificaCommessaCA(this.checked)"/>
+
+
+	</tab>
+	<tab name="DatiGestionaliTab" resourceFile="it.thera.thip.base.commessa.resources.Commessa" resourceID="DatiGestionali">
+		<multisearchform classRD="CommessaPrincipale" name="CommessaPrincipale"/>
+		<multisearchform classRD="ResponsabileCommessa" name="ResponsabileCommessa"/>
+		<multisearchform classRD="ResponsabilePreventivaz" name="ResponsabilePreventivaz"/>
+		<multisearchform classRD="Ordine" name="Ordine" additionalfields="1" fixedRestrictConditions="StatoAvanzamento,2;DatiComuniEstesi.Stato,V" onKeyChange="onOrdineChangeAction()"/>
+		<multisearchform classRD="RigaOrdine" name="RigaOrdine"/>
+		<!-- Fix 15938 begin -->
+		<button name="GenOrdVenBUT" script="creaOrdineVendita()" resourceFile ="it.thera.thip.base.commessa.resources.Commessa" resourceTooltipID="GenOrdVenButton" resourceID="GenOrdVenButtonID" />
+   		<!-- Fix 15938 end -->
+		<textinput classAD="RifOrdineRiorg" id="RifOrdineRiorg" name="RifOrdineRiorg" />
+		<textinput classAD="DataApertura" id="DataApertura" name="DataApertura" showCalendarBtn="yes"/>
+		<textinput classAD="DataConferma" id="DataConferma" name="DataConferma" showCalendarBtn="yes"/>
+		<textinput classAD="DataInizioPrevista" id="DataInizioPrevista" name="DataInizioPrevista" showCalendarBtn="yes"/>
+		<textinput classAD="DataFinePrevista" id="DataFinePrevista" name="DataFinePrevista" showCalendarBtn="yes"/>
+		<textinput classAD="DataPrimaAttivita" id="DataPrimaAttivita" name="DataPrimaAttivita"/>
+		<textinput classAD="DataUltimaAttivita" id="DataUltimaAttivita" name="DataUltimaAttivita"/>
+		<!-- 33950 inizio --> 
+		<textinput classAD="DataEstrazioneStorici" id="DataEstrazioneStorici" name="DataEstrazioneStorici" showCalendarBtn="yes"/>
+		<!-- 33950 fine -->
+		<textinput classAD="DataChiusuraTecnica" id="DataChiusuraTecnica" name="DataChiusuraTecnica" showCalendarBtn="yes"/>
+		<textinput classAD="DataChiusuraOperativa" id="DataChiusuraOperativa" name="DataChiusuraOperativa" showCalendarBtn="yes"/>
+		<textinput classAD="DataChiusura" id="DataChiusura" name="DataChiusura" showCalendarBtn="yes"/>
+		<combobox classAD="PianoFatturazione" name="PianoFatturazione" onChange="onPianoFattChangeAction()"/>
+		<checkbox classAD="ChiudiOrdUltimaFat" name="ChiudiOrdUltimaFat"/>
+	</tab>
+
+  <!--Fix 19897 inizio-->
+  <tab name="CIGCUP" resourceFile="it.thera.thip.base.commessa.resources.Commessa" resourceID="CIGCUP">
+    <!--<combobox classAD="TipoGestioneCigCup" name="TipoGestioneCigCup"/>Fix 20785-->
+    <!--textinput classAD="NumeroDocumento" id="NumeroDocumento" name="NumeroDocumento"/--> <!--Commentato da fix 31437 -->
+    <!--textinput classAD="DataDocumento" id="DataDocumento" name="DataDocumento" showCalendarBtn="yes"/--><!--Commentato da fix 31437 -->
+    <!--<textinput classAD="NumeroItem" id="NumeroItem" name="NumeroItem"/>Fix 20785-->
+    <!--textinput classAD="IdCommConven" id="IdCommConven" name="IdCommConven"/--><!--Commentato da fix 31437 -->
+    <textinput classAD="CodiceCUP" id="CodiceCUP" name="CodiceCUP"/>
+    <textinput classAD="CodiceCIG" id="CodiceCIG" name="CodiceCIG"/>
+	<!--31437 inizio -->
+	<editgrid name="DocumentiCollegate" visiblerows="8" classCD="DocumentiCollegate" type="include" noControlRowKeys="yes">
+		<column classAD="TipoDocumento"></column>
+		<column classAD="DataDocumento" ></column>
+		<column classAD="CommConvenzione" ></column>
+		<column classAD="NumeroDocumento" ></column>
+	</editgrid>			
+	<!--31437 fine -->
+  </tab>
+  <!--Fix 19897 fine-->
+  <!--35382 inizio -->
+  <tab name="BudgetTab" resourceFile="it.thera.thip.base.commessa.resources.Commessa" resourceID="Budget">
+  	<button name="CreaBudgetButton" script="apriCreaBudget()" resourceFile ="it.thera.thip.produzione.commessa.resources.BudgetCommessa" resourceTooltipID="CreaBudgetButton" resourceID="CreaBudgetButton" />
+  </tab>
+  <!-- 35382 fine -->
+  <!--Fix 20785 inizio-->
+  <label name="DatiOrdAcq" resourceFile="it.thera.thip.base.commessa.resources.Commessa" resourceID="DatiOrdAcq"/>
+  <label name="DatiCont" resourceFile="it.thera.thip.base.commessa.resources.Commessa" resourceID="DatiCont"/>
+  <label name="DatiConv" resourceFile="it.thera.thip.base.commessa.resources.Commessa" resourceID="DatiConv"/>
+  <label name="DatiRicez" resourceFile="it.thera.thip.base.commessa.resources.Commessa" resourceID="DatiRicez"/>
+  <label name="DatiFattColl" resourceFile="it.thera.thip.base.commessa.resources.Commessa" resourceID="DatiFattColl"/>
+  <textinput classAD="NumeroDocOrdAcq" id="NumeroDocOrdAcq" name="NumeroDocOrdAcq"/>
+  <textinput classAD="DataDocOrdAcq" id="DataDocOrdAcq" name="DataDocOrdAcq" showCalendarBtn="yes"/>
+  <textinput classAD="IdCommConvOrdAcq" id="IdCommConvOrdAcq" name="IdCommConvOrdAcq"/>
+  <textinput classAD="NumeroDocContratto" id="NumeroDocContratto" name="NumeroDocContratto"/>
+  <textinput classAD="DataDocContratto" id="DataDocContratto" name="DataDocContratto" showCalendarBtn="yes"/>
+  <textinput classAD="IdCommConvContratto" id="IdCommConvContratto" name="IdCommConvContratto"/>
+  <textinput classAD="NumeroDocRicezione" id="NumeroDocRicezione" name="NumeroDocRicezione"/>
+  <textinput classAD="DataDocRicezione" id="DataDocRicezione" name="DataDocRicezione" showCalendarBtn="yes"/>
+  <textinput classAD="IdCommConvRicezione" id="IdCommConvRicezione" name="IdCommConvRicezione"/>
+  <textinput classAD="NumeroDocFatColl" id="NumeroDocFatColl" name="NumeroDocFatColl"/>
+  <textinput classAD="DataDocFatColl" id="DataDocFatColl" name="DataDocFatColl" showCalendarBtn="yes"/>
+  <textinput classAD="IdCommConvFatColl" id="IdCommConvFatColl" name="IdCommConvFatColl"/>
+  <!--Fix 20785 fine-->
+
+	<tab name="PianoFatturazioneTab" resourceFile="it.thera.thip.base.commessa.resources.Commessa" resourceID="PianoFatturazione">
+		<!-- Fix 29025 inizio -->
+		<combobox classAD="TipoPiano" id="TipoPiano" name="TipoPiano"/>
+		<checkbox classAD="UtilizzaContoAnticipi" id="UtilizzaContoAnticipi" name="UtilizzaContoAnticipi"/>
+		<!-- Fix 29025 fine -->
+		<textinput classAD="ValoreTotaleOrdine" id="ValoreTotaleOrdine" name="ValoreTotaleOrdine"/>
+		<textinput classAD="ValoreOrdRiorg" id="ValoreOrdRiorg" name="ValoreOrdRiorg"/>
+		<textinput classAD="ValoreTotaleRate" id="ValoreTotaleRate" name="ValoreTotaleRate"/>
+
+		<editgrid name="RateCommesse" visiblerows="8" classCD="RateCommesse" menu="bottom" type="independent">
+			<column classAD="NumeroRata"></column>
+			<column classAD="TipoRata"></column>	<!-- Fix 29025 -->
+			<column classAD="NumGiorniDaEventi"></column>
+			<column classAD="IdArticolo"></column>
+			<column classAD="QuantitaPrmMag"></column>
+			<column classAD="ImportoRata"></column>
+			<column classAD="PercSuOrdine"></column>
+			<!-- Fix 04599 Begin -->
+			<!--column classAD="IdNumeroDocumento"></column-->
+			<column classAD="NumeroDocumentoFormattato"></column>
+			<!-- Fix 04599 End -->
+			<column classAD="DataFatturazione"></column>
+			<column classAD="CollegamentoOrdine"></column>
+			<column classAD="AnnoNumeroFattura"></column>
+			<column classAD="DataFattura"></column>
+			<column classAD="DatiComuniEstesi.Stato"></column>
+		</editgrid>
+
+	</tab>
+	<tab name="CommentiTab" resourceFile="it.thera.thip.base.commessa.resources.Commessa" resourceID="Commenti">
+		<subform name="Commenti" classCD="Commenti"/>
+		<multisearchform name="DocumentoMM" classRD="DocumentoMM"/>
+		<textarea classAD="Note" id="Note" name="Note"/>
+	</tab>
+	<tab name="tabExtension" resourceFile="it.thera.thip.base.articolo.resources.ClasseA" resourceID="Estensioni">
+    	<extension name="ext" classCD="AttributiEstendibili"/>
+	</tab>
+	<!-- Fine Fix 03463 A.Boulila -->
+  	<tab name="DescrizioneTab" resourceFile="it.thera.thip.cs.resources.Cs" resourceID="DescrizioniNLS">
+	  	<subform classCD="Descrizione" name="DescrizioneGriglia" formJSPName="it/thera/thip/cs/DescrizioneInLingua.jsp"/>
+	</tab>
+</tabbed>
+
+</form>
+
+</tfml>

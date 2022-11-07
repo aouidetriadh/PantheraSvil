@@ -1,0 +1,192 @@
+<!--
+ Version 1.0.5 Date 7-feb-2001 Author: f.m. Aggiunto menu come figlio di include  Version 1.0.6 Date 8-feb-2001 Author: f.m. Editing toolbar  Version 1.0.7 Date 26-feb-2001 Author: f.m.  Version 1.0.8 Date 7-mar-2001 Author: f.m. Version 1.0.9 Date 11-mar-2001 Author: f.m.
+Version 1.0.10 Date 16-mar-2001 Author: f.m.
+
+-->
+<!ELEMENT tfml (form*,menubar*,toolbar*,settingbar*)>
+<!ELEMENT form (label*|subform*|textinput*|labelres*|textarea*|checkbox*|radiobutton*|combobox*|listbox*|searchcombobox*|searchform*|multisearchform*|button*|customjs*|toolbar?|menubar?|gridform?)*>
+<!ATTLIST form
+ name CDATA #REQUIRED
+ classHdr CDATA #IMPLIED
+ menubar CDATA "yes"
+ toolbar CDATA "yes"
+ submitReset (none | submit | both) #IMPLIED
+ errorList CDATA "yes"
+ inputFont CDATA #IMPLIED
+ servlet CDATA #IMPLIED
+>
+<!ELEMENT menubar (menu*|import?|exclude*|include*)*>
+<!ATTLIST menubar
+ name CDATA #REQUIRED
+ width CDATA #REQUIRED
+ color CDATA #IMPLIED
+ background CDATA #IMPLIED
+>
+<!ELEMENT toolbar (option*,import?,exclude*,include*)>
+<!ATTLIST toolbar
+ name CDATA #REQUIRED
+ width CDATA #REQUIRED
+ height CDATA #REQUIRED
+ color CDATA #IMPLIED
+ background CDATA #IMPLIED
+>
+<!ELEMENT settingbar (option+)>
+<!ATTLIST settingbar
+ name CDATA #REQUIRED
+ width CDATA #REQUIRED
+ height CDATA #REQUIRED
+>
+<!ELEMENT label EMPTY>
+<!ATTLIST label
+ name CDATA #REQUIRED
+ classAD CDATA #IMPLIED
+ classHdr CDATA #IMPLIED
+ resourceFile CDATA #IMPLIED
+ resourceID CDATA #IMPLIED
+>
+<!ELEMENT subform EMPTY>
+<!ATTLIST subform
+ name CDATA #REQUIRED
+ classCD CDATA #REQUIRED
+>
+<!ELEMENT textinput EMPTY>
+<!ATTLIST textinput
+ name CDATA #REQUIRED
+ classAD CDATA #REQUIRED
+ classHdr CDATA #IMPLIED
+ onfocus CDATA #IMPLIED
+ onblur CDATA #IMPLIED
+>
+<!ELEMENT labelres EMPTY>
+<!ATTLIST labelres
+ name CDATA #REQUIRED
+ resourceFile CDATA #REQUIRED
+ resourceID CDATA #REQUIRED
+>
+<!ELEMENT textarea EMPTY>
+<!ATTLIST textarea
+ name CDATA #REQUIRED
+ classAD CDATA #REQUIRED
+ classHdr CDATA #IMPLIED
+>
+<!ELEMENT checkbox EMPTY>
+<!ATTLIST checkbox
+ name CDATA #REQUIRED
+ classAD CDATA #REQUIRED
+ classHdr CDATA #IMPLIED
+>
+<!ELEMENT radiobutton EMPTY>
+<!ATTLIST radiobutton
+ name CDATA #REQUIRED
+ classAD CDATA #REQUIRED
+ classHdr CDATA #IMPLIED
+>
+<!ELEMENT combobox EMPTY>
+<!ATTLIST combobox
+ name CDATA #REQUIRED
+ classAD CDATA #REQUIRED
+ classHdr CDATA #IMPLIED
+>
+<!ELEMENT listbox EMPTY>
+<!ATTLIST listbox
+ name CDATA #REQUIRED
+ classAD CDATA #REQUIRED
+ classHdr CDATA #IMPLIED
+>
+<!ELEMENT searchcombobox EMPTY>
+<!ATTLIST searchcombobox
+ name CDATA #REQUIRED
+ classAD CDATA #REQUIRED
+ classRD CDATA #REQUIRED
+ classHdr CDATA #IMPLIED
+ where CDATA #IMPLIED
+ displaytype (id | desc | idDesc) "idDesc"
+ editbutton CDATA "no"
+>
+<!ELEMENT searchform EMPTY>
+<!ATTLIST searchform
+ name CDATA #REQUIRED
+ classAD CDATA #REQUIRED
+ classRD CDATA #REQUIRED
+ classHdr CDATA #IMPLIED
+ displaytype (id | desc | idDesc) "idDesc"
+ editbutton CDATA "no"
+ relatedname CDATA #IMPLIED
+ relatedclassAD CDATA #IMPLIED
+ where CDATA #IMPLIED
+>
+<!ELEMENT button EMPTY>
+<!ATTLIST button
+ name CDATA #REQUIRED
+ resourceFile CDATA #IMPLIED
+ resourceID CDATA #IMPLIED
+ script CDATA #IMPLIED
+ url CDATA #IMPLIED
+ image CDATA #IMPLIED
+>
+<!ELEMENT customjs (#PCDATA)>
+<!ATTLIST customjs
+ name CDATA #REQUIRED
+>
+<!ELEMENT gridform (menubar*,toolbar*,settingbar*)*>
+<!ATTLIST gridform
+ classHdr CDATA #IMPLIED
+ type (list | search) "list"
+ menubar CDATA "yes"
+ toolbar CDATA "yes"
+ settingbar CDATA "yes"
+ servlet CDATA #IMPLIED
+>
+<!ELEMENT option EMPTY>
+<!ATTLIST option
+ id CDATA #REQUIRED
+ caption CDATA #IMPLIED
+ image CDATA #IMPLIED
+ action CDATA #IMPLIED
+ target (new | same) "same"
+ sensibility (single | multiple) #IMPLIED
+ type (url | action | action_submit) #IMPLIED
+ url CDATA #IMPLIED
+ resourceFile CDATA #IMPLIED
+ resourceID CDATA #IMPLIED
+ resizable (yes | no) "yes"
+ toolbar (no | yes) "yes"
+>
+<!ELEMENT menu (option*,submenu*)*>
+<!ATTLIST menu
+ name CDATA #REQUIRED
+ caption CDATA #IMPLIED
+ resourceFile CDATA #IMPLIED
+ resourceID CDATA #IMPLIED
+>
+<!ELEMENT submenu (option*,submenu*)>
+<!ATTLIST submenu
+ id CDATA #REQUIRED
+ name CDATA #IMPLIED
+ caption CDATA #REQUIRED
+ resourceFile CDATA #IMPLIED
+ resourceID CDATA #IMPLIED
+>
+<!ELEMENT import EMPTY>
+<!ATTLIST import
+ file CDATA #REQUIRED
+>
+<!ELEMENT exclude EMPTY>
+<!ATTLIST exclude
+ position CDATA #REQUIRED
+>
+<!ELEMENT include (option*,submenu*,menu*)>
+<!ATTLIST include
+ position CDATA #REQUIRED
+>
+<!ELEMENT multisearchform EMPTY>
+<!ATTLIST multisearchform
+ name CDATA #REQUIRED
+ classRD CDATA #REQUIRED
+ displaytype CDATA #IMPLIED
+ editbutton CDATA #IMPLIED
+ additionalfields CDATA #IMPLIED
+ parents CDATA #IMPLIED
+ children CDATA #IMPLIED
+>
+

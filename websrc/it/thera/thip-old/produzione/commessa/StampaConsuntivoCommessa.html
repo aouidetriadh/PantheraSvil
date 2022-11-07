@@ -1,0 +1,113 @@
+<html>
+<head>
+	<title>StampaConsuntivoCommessa</title>
+</head>
+<body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0">
+
+<form name="StampaConsuntivoCommessa">
+	<table height="100%" width="100%" cellspacing="0" cellpadding="2">
+		<tr><td style="height:0"><span class="menubar" id="myMenuBar"/></td></tr>
+		<tr><td style="height:0"><span class="toolbar" id="myToolBar"/></td></tr>
+		<tr>
+			<td>
+				<span class="tabbed" id="mytabbed">
+					<span class="tab" id="GeneraleTab">
+						<table style="margin: 7 7 7 7;" cellspacing="2" cellpadding="2">
+							<tr>
+								<td><input type="hidden" id="thReportId" name="thReportId"/></td>
+								<td><input type="hidden" id="IdAzienda" name="IdAzienda"/></td>
+							</tr>
+							<tr>
+								<td><label for="StatoCommessa">StatoCommessa</label></td>
+								<td><select name="StatoCommessa" id="StatoCommessa"></select></td>
+							</tr>							
+							<tr>
+								<td><label for="TipoStampa">TipoStampa</label></td>
+								<td><select name="TipoStampa" id="TipoStampa"></select>
+								</td>
+							</tr>
+							<tr>
+								<td><label for="TipoDettaglio">TipoDettaglio</label></td>
+								<td><select name="TipoDettaglio" id="TipoDettaglio"></select></td>
+							</tr>
+							<!-- 36252 inizio -->
+							<tr>
+								<td></td>
+								<td><input type="checkbox" name="UsaConsuntiviStoricizzati" id="UsaConsuntiviStoricizzati"/></td>
+							</tr>
+							<tr>
+								<td nowrap="true"><label for="DataRiferimento">DataRiferimento</label></td>
+								<td nowrap="true">
+									<input id="DataRiferimento" name="DataRiferimento"></input>
+								</td>
+							</tr>
+							<tr>
+								<td nowrap="true"><label for="Commessa">Commessa</label></td>
+								<td nowrap="true"><span class="multisearchform" id="Commessa"/></td>
+							</tr>
+							<tr>
+								<td nowrap="true"><label for="ConsuntivoCommessa">Consuntivo</label></td>
+								<td nowrap="true"><span class="multisearchform" id="ConsuntivoCommessa"/></td>
+							</tr>
+							<!-- 36252 fine -->
+							<tr>
+							<td></td>
+								<td>
+									<input type="checkbox" name="ExecutePrint" id="ExecutePrint"/>
+								</td>
+							</tr>	
+						</table>
+					</span>					
+					<span class="tab" id="FiltroTab">
+						<table style="margin: 7 7 7 7;" cellspacing="2" cellpadding="2" width="98%">
+							<tr id="TR_FILTRO_B">
+								<td>
+									<table>
+										<tr>
+											<td><label for="ArticoliRisorse">ArticoliRisorse</label></td>
+											<td><select name="ArticoliRisorse" id="ArticoliRisorse"></select>
+											</td>
+										</tr>
+										<tr>
+											<td><label for="TipoRiga">TipoRiga</label></td>
+											<td><select name="TipoRiga" id="TipoRiga"></select>
+											</td>
+										</tr>
+										<tr>
+											<td><label for="DataSaldoIniziale">DataSaldoIniziale</label></td>
+											<td><input type="text" name="DataSaldoIniziale" id="DataSaldoIniziale"/></td>
+											<td><label for="DataSaldoFinale">DataSaldoFinale</label></td>
+											<td><input type="text" name="DataSaldoFinale" id="DataSaldoFinale"/></td>
+										</tr>
+										<tr>
+											<td><label for="TipoRisorsa">TipoRisorsa</label></td>
+											<td><select name="TipoRisorsa" id="TipoRisorsa"></select></td>
+										</tr>
+										<tr>
+											<td><label for="LivelloRisorsa">LivelloRisorsa</label></td>								
+											<td><select name="LivelloRisorsa" id="LivelloRisorsa"></select></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="5">
+									<table width="100%">									
+										<span class="subform" id="CondizioniFiltri"></span>								
+									</table>
+								</td>									
+							</tr>
+						</table>
+					</span>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<td style="height:0"><span class="errorlist"/></td>
+		</tr>
+	</table>
+</form>
+
+</body>
+<script language='JavaScript1.2' type='text/javascript' src='com/thera/thermfw/batch/PrintBatchRunnable.js'></script>
+</html>

@@ -1,0 +1,124 @@
+<html>
+
+<head>
+	<title>ComponenteCosto</title>
+</head>
+
+<body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0">
+
+<script language='JavaScript1.2' type='text/javascript' src='it/thera/thip/cs/util.js'></script>
+
+	<form name="form1">
+		<table height="100%" width="100%" cellspacing="0" cellpadding="2" id="emptyborder">
+			<tr>
+				<td style="height:0"><span class="menubar" id="myMenuBar"></span></td>
+			</tr>
+			<tr>
+				<td style="height:0"><span class="toolbar" id="myToolBar"></span></td>
+			</tr>
+			<tr>
+				<td>
+					<span class="tabbed" id="mytabbed">
+						<span class="tab" id="tab1">
+							<table border="0" style="margin:5 5 5 5">					
+								<tr>
+									<td width="120px"><label for="T1">Codice</label></td>
+									<td align="left"><input type="text" id="T1" name="T1"/></td>
+								</tr>
+								<tr>
+									<td colspan="2" width="120px"><span class="subform" id="T2"></span></td>
+								</tr>
+								<tr>
+									<td width="120px"><label for="T3">Tipo</label></td>
+									<td><select name="T3" id="T3"></select></td>
+								</tr>
+								<tr>
+									<td width="120px"><label for="T4">Provinienza</label></td>
+									<td><select name="T4" id="T4"></select></td>
+								</tr>
+								<tr>
+									<td width="120px"><label for="T5">Criticita</label></td>
+									<td><select name="T5" id="T5"></select></td>
+								</tr>
+								<tr>
+									<td width="120px"><label for="T6">Formula</label></td>
+									<td><span class="multisearchform" id="T6"/></td>
+								</tr>
+								<tr>
+									<td colspan="2" width="120px"><span class="subform" id="T7"></span></td>
+								</tr>
+								<!-- 33950 inizio -->
+								<tr>
+									<td colspan="2">
+										<table>
+											<tr>
+												<td>
+													<fieldset name="CommessaFieldSet"><legend align="top"><label id="CommessaLabel" name="CommessaLabel"/></legend>
+														<table border="0">
+															<tr>
+																<td width="110px"></td>
+																<td nowrap="true"><input type="Checkbox" id="GestioneATempo" name="GestioneATempo" onClick="gestioneATempo();"/></td>
+															</tr>
+															<tr>
+																<td nowrap="true" width="110px"><label for="TipoCosto">TipoCosto</label></td>
+																<td nowrap="true"><span class="multisearchform" id="TipoCosto"/></td>
+															</tr>
+															<!--tr>
+																<td nowrap="true"><label for="TipoRisorsa">TipoRisorsa</label></td>
+																<td nowrap="true"><select name="TipoRisorsa" id="TipoRisorsa"/></td>
+															</tr>
+															<tr>
+																<td nowrap="true"><label for="LivelloRisorsa">LivelloRisorsa</label></td>
+																<td nowrap="true"><select name="LivelloRisorsa" id="LivelloRisorsa"/></td>
+															</tr-->
+															<tr>
+																<td nowrap="true" width="110px"><label for="Risorsa">Risorsa</label></td>
+																<td nowrap="true">
+																	<select name="TipoRisorsa" id="TipoRisorsa"/>
+																	<select name="LivelloRisorsa" id="LivelloRisorsa"/>
+																	<span class="multisearchform" id="Risorsa"/>
+																</td>
+															</tr>
+															<tr>
+																<td nowrap="true" width="110px"><label for="CostoUnitario">CostoUnitario</label></td>
+																<td nowrap="true"><input type="text" id="CostoUnitario" name="CostoUnitario"/></td>
+															</tr>															
+														</table>
+													</fieldset>
+												</td>												
+											</tr>
+										</table>									
+									</td>
+								</tr>								
+								<!-- 33950 fine -->
+								<tr>
+									<td><input type="text" id="T0" name="T0" style="display: none;"/></td>
+								</tr>
+							</table>
+						</span>
+						<span class="tab" id="tab3">
+							<table width="100%">
+								<tr>
+									<td><span id="T9" class="doublelist"></span></td>
+								</tr>
+							</table>
+						</span>
+						<span class="tab" id="tab2">
+							<table width="100%">
+								<tr>
+									<td valign="top"><span class="subform" name="T8" id="T8"></span></td>
+								</tr>
+							</table>
+						</span>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td style="height:0"><span class="errorlist"></span></td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+
+</html>

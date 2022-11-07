@@ -1,0 +1,188 @@
+<tfml>
+<generator type="form"/>
+
+	<form
+		classHdr="PreventivoCommessaVoce"
+		name="PreventivoCommessaVoceForm"
+		errorList="yes"
+		menubar="yes"
+		toolbar="yes"
+		submitReset="none"
+		header="it.thera.thip.cs.Header.jsp"
+		footer="it.thera.thip.cs.Footer.jsp"
+		servlet="it.thera.thip.base.commessa.web.PreventivoCommessaVoceRidottaFAA"
+    	webFormModifierClass="it.thera.thip.base.commessa.web.PreventivoCommessaVoceFormModifier"
+		jsLibraryName="it/thera/thip/base/commessa/PreventivoCommessaVoce.js"
+		onLoadPresent="yes"
+	>
+
+
+		<!-- **************************************************************************************************** -->
+		<!-- Menubar -->
+		<menubar	name="myMenuBar">
+			<import file="it/thera/thip/cs/defObjMenu.tfml"/>
+		</menubar>
+
+
+		<!-- **************************************************************************************************** -->
+		<!-- Toolbar -->
+		<toolbar name="myToolBar" imgwidth="16" imgheight="16">
+			<import file="it/thera/thip/cs/defObjMenu.tfml"/>
+		</toolbar>
+
+
+		<!-- **************************************************************************************************** -->
+		<!-- Pannello tabulare principale -->
+		<tabbed name="MainTabbed" height="100%" width="100%">
+
+			<!-- ************************************************************************************************ -->
+			<!-- Cartella Generale -->
+			<tab name="GeneraleTab" resourceFile="it.thera.thip.base.commessa.resources.PreventivoCommessaVoce" resourceID="GeneraleTab">
+				<textinput classAD="SequenzaRiga" name="SequenzaRiga"/>
+
+		        <combobox classAD="TipoRigav" name="TipoRigav"/>
+		
+		        <subform classCD="Descrizione" name="descrizioneComponent"/>
+
+				<checkbox classAD="NoFatturare" name="NoFatturare"/>
+
+		        <label resourceFile="it.thera.thip.base.commessa.resources.PreventivoCommessaVoce" resourceID="Risorsa" name="RisorsaLabel"/>
+		        <combobox classAD="TipoRisorsa" name="TipoRisorsa"/>
+		        <combobox classAD="LivelloRisorsa" name="LivelloRisorsa"/>
+		        <multisearchform classRD="Risorsa" name="Risorsa" additionalRestrictConditions="TipoRisorsa, TipoRisorsa; LivelloRisorsa, LivelloRisorsa"
+							    onKeyFocus="memorizzaCodiceRisorsa()"
+							    onKeyChange="variazioneRisorsa()"
+							    onKeyBlur="confrontaCodiceRisorsa()"
+							    onSearchBack="recuperaDatiRisorsa()"
+							    extraRelatedClassAD="ArticoloServizio" descCols="36" />
+
+				<!--articolomultisearchform classRD="RArticolo" name="RArticolo" onKeyChange="onArticoloChangeAction()"/-->
+				<articolomultisearchform classRD="RArticolo" name="RArticolo"
+										 onKeyFocus="memorizzaCodiceArticolo()"
+										 onKeyChange="variazioneArticolo()"
+										 onKeyBlur="confrontaCodiceArticolo()"
+										 onSearchBack="recuperaDatiArticolo()"
+
+										 fixedRestrictConditions="IdSchemaCfg,NULL_VALUE;ArticoloDatiProduz.IdClasseMerclg,NOT_NULL_VALUE;DatiComuniEstesi.Stato,V"
+										 additionalRestrictConditions="TipoRigav,TipoArticolo"
+										 specificDOList="it.thera.thip.base.commessa.web.RicercaArticoliDOList"/>
+
+				<textinput classAD="CoeffImpiego" name="CoeffImpiego" onChange="ricalcoloQuantita()"/>
+				<checkbox classAD="BloccoRicalcolo" name="BloccoRicalcolo" onClick="gestioneBloccoRicalcolo()"/>
+				<multisearchform classRD="VersioneArticolo" name="VersioneArticolo"/>
+				<configurazionemultisearchform
+					classRD="Configurazione"
+					name="Configurazione"
+					additionalRestrictConditions="IdArticolo,IdArticolo"
+
+				 	extraRelatedClassAD="IdAzienda,IdConfigurazione"
+				/>
+
+				<label name="LabelGroupBoxQuantita" resourceFile="it.thera.thip.base.commessa.resources.PreventivoCommessaVoce" resourceID="QuantitaGroupBox"></label>
+
+        		<!-- <textinput classAD="QtaUmVenMag" name="QtaUmVenMag" onChange="variazioneQuantVenditaRiga(false)"/>-->
+        		<textinput classAD="QtaUmVenMag" name="QtaUmVenMag" onChange="recuperaDatiCondVendita()"/>
+				<searchcombobox classRD="UmVenMag" name="UmVenMag" cols="20" onChange="variazioneUnitaMisura()" getAvailableElements="getListaUMRiferimento"/>
+
+				<!--textinput classAD="QtaUmPrmMag" name="QtaUmPrmMag"/>
+				<textinput classAD="IdUmPrmMag" name="IdUmPrmMag"/-->
+				
+				<textinput classAD="QtaUmPrmMag" id="QtaUmPrmMag" name="QtaUmPrmMag" onChange="recuperaDatiArticoloServizio()"/>
+   				<searchcombobox classRD="UmPrmMag" name="UmPrmMag" cols="20" getAvailableElements="getListaUMTempo" onChange="recuperaDatiArticoloServizio()"/>
+
+				<textinput classAD="QtaUmSecMag" name="QtaUmSecMag"/>
+				<textinput classAD="IdUmSecMag" name="IdUmSecMag"/>
+
+				<label name="LabelGroupBoxDateConsegna" resourceFile="it.thera.thip.base.commessa.resources.PreventivoCommessaVoce" resourceID="DateConsegnaGroupBox"></label>
+
+				<textinput classAD="DataConsegRcs" name="DataConsegRcs" onChange="gestDataConsegnaRichiesta()" showCalendarBtn="yes"/>
+				<textinput classAD="SettConsegRcs" name="SettConsegRcs"/>
+				<textinput classAD="DataConsegPrv" name="DataConsegPrv" onChange="gestDataConsegnaConfermata()" showCalendarBtn="yes"/>
+				<textinput classAD="SettConsegPrv" name="SettConsegPrv"/>
+				<subform classCD="DatiComuniEstesi" name="DatiComuniEstesiStato"/>
+			</tab>
+
+			<tab
+				name="PrezziCostoRisorsa"
+				resourceFile="it.thera.thip.base.commessa.resources.PreventivoCommessaVoce"
+				resourceID="PrezziCostoRisorsa"
+			>
+
+				<textinput classAD="Prezzo" name="Prezzo" onChange="calcolaMargine()"/>
+
+				<textinput classAD="PrezzoExtra" name="PrezzoExtra" onChange="calcolaMargine()"/>
+				<!--button name="ButtonRigheSec"   script="aggiornaPrezzo()" resourceFile ="it.thera.thip.base.commessa.resources.PreventivoCommessaVoce" resourceTooltipID="RicalcolaButton" resourceID="RicalcolaButtonID" /-->
+				<combobox classAD="TipoPrezzo" name="TipoPrezzo"/>
+
+				<combobox classAD="ProvenienzaPrezzo" name="ProvenienzaPrezzo"/>
+
+		        <textinput classAD="CostoRiferimento" name="CostoRiferimento" onChange="calcolaPrezzo()"/>
+		
+		        <multisearchform classRD="SchemaCosto" name="SchemaCosto"/>
+		
+		        <multisearchform classRD="ComponenteCosto" name="ComponenteCosto" specificDOList="it.thera.thip.base.commessa.web.PrevCommVoceComponenteCostoDoList" additionalRestrictConditions="IdSchemaCosti,IdSchemaCosti"/>
+		        <textinput classAD="Markup" id="Markup" name="Markup" onChange="calcolaPrezzoDaMarkup()"/><!-- 29032 -->
+		        <!-- Fix 31094 begin -->
+				<button name="RicalcolaPrezzoBut" script="ricalcolaPrezzo()" resourceFile ="it.thera.thip.base.commessa.resources.PreventivoCommessaVoce" resourceID="RicalcolaPrezzo" />
+   				<!-- Fix 31094 end -->
+			</tab>
+
+			<tab name="CommentiMultimediaTab" resourceFile="it.thera.thip.base.commessa.resources.PreventivoCommessaVoce" resourceID="CommentiMultimediaTab">
+
+				<subform classCD="Commenti" name="Commenti"/>
+
+				<multisearchform classRD="DocumentoMM" name="DocumentoMM"/>
+
+				<textarea classAD="Nota" name="Nota"/>
+
+			</tab>
+
+			<tab name="RiepilogoTab" resourceFile="it.thera.thip.base.commessa.resources.PreventivoCommessaVoce" resourceID="RiepilogoTab">
+				<tabbed name="tabbedRiepilogo" height="300" width="750">
+				    <tab name="tabRiepilogoGen" resourceFile="it.thera.thip.base.commessa.resources.PreventivoCommessaVoce" resourceID="Tab_Riepilogo_Gen">
+						<checkbox	classAD="EscRigaOfferta"	name="EscRigaOfferta"/>
+	         			<!--<multisearchform name="OffertaClienteRiga" classRD="OffertaClienteRiga"/>-->
+	         		</tab>
+	          		<tab name="tabRiepilogoVal" resourceFile="it.thera.thip.base.commessa.resources.PreventivoCommessaVoce" resourceID="Tab_Riepilogo_Val">
+	          			<label name="LabelValoreTotale" resourceID="ValoreTotale" resourceFile="it.thera.thip.base.commessa.resources.PreventivoCommessaVoce"></label>
+					  	<label name="LabelCosTotale" resourceID="CosTotale" resourceFile="it.thera.thip.base.commessa.resources.PreventivoCommessaVoce"></label>
+					  	<label name="LabelMdcTotale" resourceID="MdcTotale" resourceFile="it.thera.thip.base.commessa.resources.PreventivoCommessaVoce"></label>
+			            <textinput classAD="ValoreTotale" name="ValoreTotale"/>
+			            <textinput classAD="CosTotale" name="CosTotale"/>
+			            <textinput classAD="MdcTotale" name="MdcTotale"/>
+	          		</tab>
+      			</tabbed>
+    		</tab>
+		    <tab name="TabDes" resourceFile="it.thera.thip.base.commessa.resources.PreventivoCommessaVoce" resourceID="Descrizioni">
+		      <subform classCD="Descrizione" name="GrigliaNLS" formJSPName="it/thera/thip/cs/DescrizioneInLingua.jsp"/>
+		    </tab>
+	    <!--<tab name="TabRigheSec" resourceFile="it.thera.thip.base.commessa.resources.PreventivoCommessaVoce" resourceID="RigheSec">
+	      <editgrid name="righe" visiblerows="10" classCD="Righe" type="edit" orderButtons="no">
+	        <column classAD="IdNumeroPrevc"/>
+	        <column classAD="IdRigacPrv"/>
+	        <column classAD="IdRigavPrv"/>
+	        <column classAD="IdSubRigavPrv"/>
+	        <include nameList="DeleteRow">
+	          <actionItem name="Modifica" disableOnShow="yes" type="javascript" action="apriDettaglioRiga()" resourceFile="it.thera.thip.qualita.costiNQ.resources.PraticaCosti" resourceID="ApriRiga" />
+	        </include>
+	      </editgrid>
+	    </tab>-->
+		</tabbed>
+
+		<!-- **************************************************************************************************** -->
+		<!-- Campi nascosti -->
+	  <textinput name="IdAzienda" classAD="IdAzienda"/>
+	  <textinput name="IdAnnoPrevc" classAD="IdAnnoPrevc"/>
+	  <textinput name="IdNumeroPrevc" classAD="IdNumeroPrevc"/>
+	  <textinput name="IdRigacPrv" classAD="IdRigacPrv"/>
+	  <textinput name="IdSubRigacPrv" classAD="IdSubRigacPrv"/>
+	  <textinput name="IdRigavPrv" classAD="IdRigavPrv"/>
+	  <textinput name="IdSubRigavPrv" classAD="IdSubRigavPrv"/>
+	  <textinput name="SplRiga" classAD="SplRiga"/>
+	  <textinput name="GeneraRigaDettaglio" classAD="GeneraRigaDettaglio"/><!-- 29166-->
+	  <textinput classAD="DescrizioneArticolo" name="DescrizioneArticoloField" />
+	  <textinput classAD="Valuta" id="Valuta" name="Valuta"/>
+	  <textinput name="ValutaAziendale" classAD="ValutaAziendale"/>
+	  <textinput classAD="Cambio" id="Cambio" name="Cambio"/>
+	</form>
+</tfml>

@@ -1,0 +1,94 @@
+<ns11:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://ws.pthupd.base.thip.thera.it" xmlns:ns2="http://ws.pthupd.base.thip.thera.it" xmlns:ns3="http://ws.pthupd.base.thip.thera.it" xmlns:ns4="http://ws.pthupd.base.thip.thera.it" xmlns:ns5="http://ws.pthupd.base.thip.thera.it" xmlns:ns6="http://ws.pthupd.base.thip.thera.it" xmlns:ns7="http://ws.pthupd.base.thip.thera.it" xmlns:ns8="http://ws.pthupd.base.thip.thera.it" xmlns:ns9="http://ws.pthupd.base.thip.thera.it" xmlns:ns10="http://ws.pthupd.base.thip.thera.it" xmlns:ns11="http://xml.apache.org/axis/wsdd/">
+ <globalConfiguration xmlns="http://xml.apache.org/axis/wsdd/">
+  <parameter name="adminPassword" value="admin" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <parameter name="attachments.Directory" value="C:\panthera\standard\webapps\standard\WEB-INF\attachments" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <parameter name="disablePrettyXML" value="true" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <parameter name="sendXsiTypes" value="true" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <parameter name="sendMultiRefs" value="true" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <parameter name="sendXMLDeclaration" value="true" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <requestFlow xmlns="http://xml.apache.org/axis/wsdd/">
+   <handler type="java:org.apache.axis.handlers.JWSHandler" xmlns="http://xml.apache.org/axis/wsdd/">
+    <parameter name="scope" value="session" xmlns="http://xml.apache.org/axis/wsdd/"/>
+   </handler>
+   <handler type="java:org.apache.axis.handlers.JWSHandler" xmlns="http://xml.apache.org/axis/wsdd/">
+    <parameter name="scope" value="request" xmlns="http://xml.apache.org/axis/wsdd/"/>
+    <parameter name="extension" value=".jwr" xmlns="http://xml.apache.org/axis/wsdd/"/>
+   </handler>
+  </requestFlow>
+ </globalConfiguration>
+ <handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper" xmlns="http://xml.apache.org/axis/wsdd/"/>
+ <handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder" xmlns="http://xml.apache.org/axis/wsdd/"/>
+ <handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler" xmlns="http://xml.apache.org/axis/wsdd/"/>
+ <service name="AdminService" provider="java:MSG" xmlns="http://xml.apache.org/axis/wsdd/">
+  <parameter name="allowedMethods" value="AdminService" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <parameter name="enableRemoteAdmin" value="false" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <parameter name="className" value="org.apache.axis.utils.Admin" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <namespace xmlns="http://xml.apache.org/axis/wsdd/">http://xml.apache.org/axis/wsdd/</namespace>
+ </service>
+ <service name="PantheraUpdateWS" provider="java:RPC" xmlns="http://xml.apache.org/axis/wsdd/">
+  <operation name="checkDependencies" qname="ns1:checkDependencies" returnQName="checkDependenciesReturn" returnType="ns1:ArrayOfDependence" soapAction="" xmlns:ns1="http://ws.pthupd.base.thip.thera.it" xmlns="http://xml.apache.org/axis/wsdd/">
+   <parameter name="dependence" type="ns1:ArrayOfDependence" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  </operation>
+  <operation name="checkLicence" qname="ns2:checkLicence" returnQName="checkLicenceReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://ws.pthupd.base.thip.thera.it" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://xml.apache.org/axis/wsdd/">
+   <parameter name="customerId" type="xsd:string" xmlns="http://xml.apache.org/axis/wsdd/"/>
+   <parameter name="hostName" type="xsd:string" xmlns="http://xml.apache.org/axis/wsdd/"/>
+   <parameter name="ipAddress" type="xsd:string" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  </operation>
+  <operation name="getMissingFixes" qname="ns3:getMissingFixes" returnQName="getMissingFixesReturn" returnType="ns3:ArrayOfFix" soapAction="" xmlns:ns3="http://ws.pthupd.base.thip.thera.it" xmlns="http://xml.apache.org/axis/wsdd/">
+   <parameter name="module" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://xml.apache.org/axis/wsdd/"/>
+   <parameter name="version" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://xml.apache.org/axis/wsdd/"/>
+   <parameter name="release" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://xml.apache.org/axis/wsdd/"/>
+   <parameter name="modification" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://xml.apache.org/axis/wsdd/"/>
+   <parameter name="fixes" type="ns3:ArrayOf_xsd_int" xmlns="http://xml.apache.org/axis/wsdd/"/>
+   <parameter name="deliveryInfracom" type="xsd:boolean" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  </operation>
+  <operation name="getPrerequisites" qname="ns4:getPrerequisites" returnQName="getPrerequisitesReturn" returnType="ns4:ArrayOfFix" soapAction="" xmlns:ns4="http://ws.pthupd.base.thip.thera.it" xmlns="http://xml.apache.org/axis/wsdd/">
+   <parameter name="fixes" type="ns4:ArrayOf_xsd_int" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  </operation>
+  <operation name="buildPackage" qname="ns5:buildPackage" returnQName="buildPackageReturn" returnType="ns5:FixPackage" soapAction="" xmlns:ns5="http://ws.pthupd.base.thip.thera.it" xmlns="http://xml.apache.org/axis/wsdd/">
+   <parameter name="osName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://xml.apache.org/axis/wsdd/"/>
+   <parameter name="rdbmsName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://xml.apache.org/axis/wsdd/"/>
+   <parameter name="databaseName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://xml.apache.org/axis/wsdd/"/>
+   <parameter name="noTestForced" type="xsd:boolean" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://xml.apache.org/axis/wsdd/"/>
+   <parameter name="customizationForced" type="xsd:boolean" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  </operation>
+  <operation name="downloadCompleted" qname="ns6:downloadCompleted" soapAction="" xmlns:ns6="http://ws.pthupd.base.thip.thera.it" xmlns="http://xml.apache.org/axis/wsdd/">
+   <parameter name="packageId" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  </operation>
+  <parameter name="wsdlServicePort" value="PantheraUpdateWS" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <parameter name="className" value="it.thera.thip.base.pthupd.ws.PantheraUpdateWS" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <parameter name="typeMappingVersion" value="1.2" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <parameter name="allowedMethods" value="downloadCompleted checkDependencies buildPackage getMissingFixes checkLicence getPrerequisites" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <parameter name="wsdlServiceElement" value="PantheraUpdateWSService" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <parameter name="wsdlTargetNamespace" value="http://ws.pthupd.base.thip.thera.it" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <parameter name="wsdlPortType" value="PantheraUpdateWS" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <parameter name="scope" value="Session" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <parameter name="schemaUnqualified" value="http://ws.pthupd.base.thip.thera.it" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns7:Dependence" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:it.thera.thip.base.pthupd.ws.Dependence" xmlns:ns7="http://ws.pthupd.base.thip.thera.it" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns8:Fix" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:it.thera.thip.base.pthupd.ws.Fix" xmlns:ns8="http://ws.pthupd.base.thip.thera.it" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns9:Documentation" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:it.thera.thip.base.pthupd.ws.Documentation" xmlns:ns9="http://ws.pthupd.base.thip.thera.it" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns10:FixPackage" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:it.thera.thip.base.pthupd.ws.FixPackage" xmlns="http://xml.apache.org/axis/wsdd/"/>
+ </service>
+ <service name="Version" provider="java:RPC" xmlns="http://xml.apache.org/axis/wsdd/">
+  <parameter name="allowedMethods" value="getVersion" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <parameter name="className" value="org.apache.axis.Version" xmlns="http://xml.apache.org/axis/wsdd/"/>
+ </service>
+ <transport name="http" xmlns="http://xml.apache.org/axis/wsdd/">
+  <requestFlow xmlns="http://xml.apache.org/axis/wsdd/">
+   <handler type="URLMapper" xmlns="http://xml.apache.org/axis/wsdd/"/>
+   <handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  </requestFlow>
+  <parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  <parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler" xmlns="http://xml.apache.org/axis/wsdd/"/>
+ </transport>
+ <transport name="local" xmlns="http://xml.apache.org/axis/wsdd/">
+  <responseFlow xmlns="http://xml.apache.org/axis/wsdd/">
+   <handler type="LocalResponder" xmlns="http://xml.apache.org/axis/wsdd/"/>
+  </responseFlow>
+ </transport>
+</ns11:deployment>

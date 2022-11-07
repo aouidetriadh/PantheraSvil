@@ -1,0 +1,72 @@
+<html>
+<head>
+	<title>Scostamento budget commessa</title>
+</head>
+<body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0">
+	<form name="form" action="no action">
+		<table height="100%" width="100%" cellspacing="2" cellpadding="2" border="0">
+			<tr>
+				<td height="150px" valign="top">
+					<table width="90%" style="margin: 0 0 0 0 ;">
+						<tr>
+							<td nowrap="true" width="110px"><label for="Commessa">Commessa</label></td>
+							<td nowrap="true" colspan="3"><span class="multisearchform" id="Commessa"/></td>
+						</tr>
+						<tr>
+							<td nowrap="true"><label for="DataRiferimento">DataRiferimento</label></td>
+							<td nowrap="true" colspan="3">
+								<input id="DataRiferimento" name="DataRiferimento"></input>
+								<button name="IndividuaBUT" id="IndividuaBUT" type="button" style="width:90"></button>
+							</td>				
+						</tr>			
+						<tr>
+							<td nowrap="true"><label for="BudgetCommessa">Budget</label></td>
+							<td nowrap="true" width="600px"><span class="multisearchform" id="BudgetCommessa"/></td>
+							<td nowrap="true" width="100px"><label for="DataBudget">DataBudget</label></td>
+							<td nowrap="true"><input id="DataBudget" name="DataBudget"></input></td>
+						</tr>
+						<tr>
+							<td nowrap="true"><label for="ConsuntivoCommessa">Consuntivo</label></td>
+							<td nowrap="true"><span class="multisearchform" id="ConsuntivoCommessa"/></td>
+							<td nowrap="true"><label for="DataConsuntivo">DataConsuntivo</label></td>
+							<td nowrap="true"><input id="DataConsuntivo" name="DataConsuntivo"></input></td>
+						</tr>
+						<tr>			
+							<td height="25px" colspan="4" valign="top">
+								<table style="margin-left: 5px;">
+									<tr>
+										<td width="50px" style="white-space:nowrap;"><input type="checkbox" id="Totali" name="Totali"/></td>
+										<td width="90px" style="white-space:nowrap;"><input type="checkbox" id="DettagliCommessa" name="DettagliCommessa"/></td>
+										<td width="90px" style="white-space:nowrap;"><input type="checkbox" id="DettagliSottoCommesse" name="DettagliSottoCommesse"/></td>
+										<td width="90px" style="white-space:nowrap;"><input type="checkbox" id="ComponentiPropri" name="ComponentiPropri"/></td>
+										<td width="90px" style="white-space:nowrap;"><input type="checkbox" id="SoloComponentiValorizzate" name="SoloComponentiValorizzate"/></td>
+										<td>
+											<button type="button" style="width:26px;height:26px;align:top" name="thApplicaScelte" id="thApplicaScelte">
+												<img border="0" width="16px" height="16px" src="thermweb/image/gui/cnr/Run.gif" />
+											</button>
+										</td>											
+										<td><span class="mdvbutton" id="newMDV" name="newMDV"></span></td>
+										<!-- 36252 inizio -->
+										<td>
+											<button type="button" style="width:26px;height:26px;align:top" name="thStampaRiepCommessa" id="thStampaRiepCommessa">
+												<img border="0" width="16px" height="16px" src="thermweb/image/gui/cnr/DocumentPreview.gif" />
+											</button>
+										</td>	
+										<!-- 36252 fine -->									
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<iframe height="100%" width="100%" id="ScostamentoBudgetCommessaDettaglio" name="ScostamentoBudgetCommessaDettaglio" style="border: 0px solid black;margin:0 5px 10px 5px;height: calc(100% - 15px);width: calc(100% - 10px);" src=""></iframe>
+				</td>
+			</tr>
+			<tr><td style="height:0"><span class="errorlist" /></td></tr>			
+		</table>
+	</form>
+</body>
+</html>
